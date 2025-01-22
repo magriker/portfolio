@@ -1,5 +1,70 @@
 .container {
-  width: 1115px;
+  width: 1155px;
   height: auto;
   margin: auto;
+}
+
+/* -------------header------------------- */
+.header-container {
+  height: 215px;
+  position: relative;
+}
+
+.intro-box {
+  width: 659px;
+  font-size: 48px;
+  color: #263680;
+}
+
+.slogan {
+  line-height: 52px;
+  letter-spacing: 0;
+}
+
+.slogan span {
+  font-weight: bold;
+}
+
+.language-box {
+  border: 1px solid blue;
+  height: 115px;
+  width: 49px;
+  position: absolute;
+  top: 0;
+  left: 1106px;
+}
+
+.navigation {
+  position: absolute;
+  width: 297px;
+  height: 30px;
+  top: 10px;
+  left: 779px;
+  border: 1px solid blue;
+}
+/* -------------contact------------------- */
+
+footer {
+  height: 301px;
+  position: relative;
+}
+
+.snsAndportfolio-box {
+  width: 368px;
+  height: 273px;
+  display: flex;
+  flex-direction: column;
+}
+
+.socialMeia-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 65px;
+}
+
+.portfolio-box {
+  height: 166px;
+  display: flex;
+  flex-direction: row;
 }
