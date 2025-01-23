@@ -47,6 +47,11 @@
 footer {
   height: 301px;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .snsAndportfolio-box {
@@ -54,6 +59,8 @@ footer {
   height: 273px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid blue;
 }
 
 .socialMeia-icons {
@@ -61,10 +68,39 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   height: 65px;
+  border: 1px solid blue;
 }
 
 .portfolio-box {
   height: 166px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.qrpic {
+  width: 166px;
+}
+
+.portfoliotext-box {
+  margin-top: 0;
+  font-size: 22px;
+  font-weight: bold;
+  width: 170px;
+  color: #263680;
+}
+
+.contact-box {
+  width: 659px;
+  height: 186px;
+  font-size: 45px;
+  color: #263680;
+}
+
+.contact-box p {
+  margin: 0;
+}
+
+.catchphrase {
+  font-weight: bold;
 }
