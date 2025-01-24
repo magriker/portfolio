@@ -1,18 +1,23 @@
 import "../App.css";
+import Label from "./Label";
 
 const Header = () => {
   return (
     <div className="header-container">
       <div className="intro-box">
-        <p className="slogan">
-          <span>Hi, I am Sophie Bolinski</span>
-          <br />
-          an industrial designer
-          <br />
-          focusing on innovation and
-          <br />
-          prototyping. Based in Tokyo.
-        </p>
+        <div className="slogan">
+          <Label size="l" bold>
+            Hi, I am Sophie Bolinski
+            <br />
+          </Label>
+          <Label size="l">
+            an industrial designer
+            <br />
+            focusing on innovation and
+            <br />
+            prototyping. Based in Tokyo.
+          </Label>
+        </div>
         <nav className="navigation"></nav>
         <div className="language-box"></div>
       </div>

@@ -10,22 +10,21 @@
   position: relative;
 }
 
-.intro-box {
+/* .intro-box {
   width: 659px;
   font-size: 48px;
   color: #263680;
-}
+} */
 
-.slogan {
+/* .slogan {
   line-height: 52px;
   letter-spacing: 0;
 }
-
-.slogan span {
+/*  */
+/* .slogan span {
   font-weight: bold;
-}
-
-.language-box {
+} */
+*/ .language-box {
   border: 1px solid blue;
   height: 115px;
   width: 49px;

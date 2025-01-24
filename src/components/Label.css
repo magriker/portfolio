@@ -1,0 +1,30 @@
+.label {
+  color: #263680;
+  font-family: "Wix Madefor Display", serif;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.label_s {
+  font-size: 14px;
+}
+.label_m {
+  font-size: 14px;
+}
+.label_l {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .label_s {
+    font-size: 14px;
+  }
+  .label_m {
+    font-size: 14px;
+  }
+  .label_l {
+    font-size: 48px;
+  }
+}
