@@ -6,6 +6,15 @@ type Props = {
   bold?: boolean;
 };
 
+type KeyValue = {
+  key: number;
+  value: string;
+};
+
+type prop2 = {
+  keyVlaueList: KeyValue[];
+};
+
 const Label: React.FC<Props> = ({ size, children, bold = false }) => {
   const labelClass = "label_" + size;
   const boldClass = bold ? "bold" : "";
