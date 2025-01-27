@@ -1,4 +1,5 @@
 import "./App.css";
+import About from "./components/About";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
@@ -7,7 +8,8 @@ function App() {
     <>
       <div className="container">
         {/* <Header></Header> */}
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
+        <About></About>
       </div>
     </>
   );

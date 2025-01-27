@@ -1,0 +1,37 @@
+.chatchphrase-box {
+  width: 373px;
+  height: 385px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portrait {
+  height: 292px;
+  width: 373;
+  object-fit: cover;
+}
+
+.chatchprase {
+  width: 299px;
+  height: 75px;
+}
+
+@media screen and (min-width: 768px) {
+  .chatchphrase-box {
+    height: 531px;
+    width: auto;
+    flex-direction: row;
+  }
+
+  .portrait {
+    width: 493px;
+    height: 531px;
+    object-fit: fill;
+  }
+
+  .chatchprase {
+    width: 567px;
+    height: 186px;
+  }
+}
