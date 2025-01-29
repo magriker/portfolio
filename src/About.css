@@ -1,6 +1,7 @@
 .chatchphrase-box {
   width: 373px;
   height: 385px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,6 +16,37 @@
 .chatchprase {
   width: 299px;
   height: 75px;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+}
+
+.workExperience {
+  width: 381px;
+  height: 370px;
+}
+.linkedin-icon {
+  width: 32px;
+}
+
+.education {
+  width: 381px;
+  height: 450px;
+}
+
+.Bachelor-box {
+  width: 305px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.circle {
+  width: 19px;
+  height: 19px;
 }
 
 @media screen and (min-width: 768px) {
@@ -33,5 +65,37 @@
   .chatchprase {
     width: 567px;
     height: 186px;
+  }
+
+  .history {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    height: 772px;
+  }
+
+  .Bachelor-box {
+    width: 473px;
+    height: 328px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+  .education {
+    width: 500px;
+    height: auto;
+  }
+
+  .workExperience {
+    width: 538px;
+    height: 547px;
+  }
+
+  .circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .linkedin-icon {
+    width: 65px;
   }
 }
