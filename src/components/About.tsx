@@ -1,5 +1,6 @@
 import Label from "./Label";
 import "../About.css";
+import Sortingtag from "./Sortingtag";
 
 const About = () => {
   return (
@@ -19,7 +20,7 @@ const About = () => {
       </div>
       <div className="history">
         <div className="workExperience">
-          <p>
+          <p className="subtitle">
             <Label size="l" bold>
               Work experience
             </Label>
@@ -100,6 +101,8 @@ const About = () => {
             </div>
           </div>
         </div>
+
+        <Sortingtag tabs={[{ key: 1, value: `all` }]}></Sortingtag>
       </div>
     </>
   );

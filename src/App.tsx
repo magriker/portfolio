@@ -7,9 +7,9 @@ function App() {
   return (
     <>
       <div className="container">
-        {/* <Header></Header> */}
+        <Header></Header>
         {/* <Footer></Footer> */}
-        <About></About>
+        {/* <About></About> */}
       </div>
     </>
   );

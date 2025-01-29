@@ -49,6 +49,10 @@
   height: 19px;
 }
 
+.subtitle {
+  margin-bottom: 18px;
+}
+
 @media screen and (min-width: 768px) {
   .chatchphrase-box {
     height: 531px;
@@ -97,5 +101,8 @@
 
   .linkedin-icon {
     width: 65px;
+  }
+  .subtitle {
+    margin-bottom: 62px;
   }
 }

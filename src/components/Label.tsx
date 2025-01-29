@@ -4,21 +4,23 @@ type Props = {
   size: "m" | "s" | "l";
   children: ReactNode;
   bold?: boolean;
+  hover?: boolean;
 };
 
-type KeyValue = {
-  key: number;
-  value: string;
-};
-
-type prop2 = {
-  keyVlaueList: KeyValue[];
-};
-
-const Label: React.FC<Props> = ({ size, children, bold = false }) => {
+const Label: React.FC<Props> = ({
+  size,
+  children,
+  bold = false,
+  hover = false,
+}) => {
   const labelClass = "label_" + size;
   const boldClass = bold ? "bold" : "";
-  return <span className={`${labelClass} label ${boldClass}`}>{children}</span>;
+  const hoverClass = hover ? "hover" : "";
+  return (
+    <span className={`${labelClass} label ${boldClass} ${hoverClass}`}>
+      {children}
+    </span>
+  );
 };
 
 export default Label;
