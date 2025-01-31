@@ -1,5 +1,6 @@
 import "../App.css";
 import Label from "./Label";
+import Sortingtag from "./Sortingtag";
 
 const Header = () => {
   return (
@@ -20,6 +21,14 @@ const Header = () => {
         </div>
         <nav className="navigation"></nav>
         <div className="language-box"></div>
+        <Sortingtag
+          tabs={[
+            { key: 1, value: `all` },
+            { key: 2, value: "Product" },
+            { key: 3, value: "Packaging" },
+            { key: 4, value: "Graphic" },
+          ]}
+        ></Sortingtag>
       </div>
     </div>
   );
