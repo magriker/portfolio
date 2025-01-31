@@ -1,6 +1,5 @@
 import Label from "./Label";
 import "../About.css";
-import Sortingtag from "./Sortingtag";
 
 const About = () => {
   return (
@@ -101,8 +100,6 @@ const About = () => {
             </div>
           </div>
         </div>
-
-        <Sortingtag tabs={[{ key: 1, value: `all` }]}></Sortingtag>
       </div>
     </>
   );

@@ -10,18 +10,18 @@ export type TabProps = {
 };
 
 const Sortingtag: React.FC<TabProps> = ({ tabs }) => {
-  const handleClick = (tab) => {
+  const handleClick = (tab: keyValue) => {
     console.log(tab.key);
   };
 
   return (
     <div className="">
       {tabs.map((tab) => (
-        <div onClick={() => handleClick(tab)} key={tab.key}>
+        <a onClick={() => handleClick(tab)} key={tab.key} className="">
           <Label size="s" hover>
             {tab.value}
           </Label>
-        </div>
+        </a>
       ))}
     </div>
   );
