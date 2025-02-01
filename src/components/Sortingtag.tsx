@@ -1,4 +1,5 @@
 import Label from "./Label";
+import "../Sortingtag.css";
 
 export type keyValue = {
   key: number;
@@ -15,9 +16,9 @@ const Sortingtag: React.FC<TabProps> = ({ tabs }) => {
   };
 
   return (
-    <div className="">
+    <div className="tag-box">
       {tabs.map((tab) => (
-        <a onClick={() => handleClick(tab)} key={tab.key} className="">
+        <a onClick={() => handleClick(tab)} key={tab.key} className="tag">
           <Label size="s" hover>
             {tab.value}
           </Label>

@@ -1,0 +1,18 @@
+.tag-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 286px;
+  height: 18px;
+}
+
+.tag {
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .tag-box {
+    width: 419px;
+    height: 30px;
+  }
+}

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "./Label.css";
+import "../Label.css";
 type Props = {
   size: "m" | "s" | "l";
   children: ReactNode;
