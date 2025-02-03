@@ -1,0 +1,9 @@
+.product-box {
+  width: 381px;
+}
+
+@media screen and (min-width: ) {
+  .product-box {
+    width: 1156px;
+  }
+}

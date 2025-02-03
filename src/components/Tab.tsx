@@ -1,5 +1,5 @@
 import Label from "./Label";
-import "../Sortingtag.css";
+import "../tab.css";
 
 export type keyValue = {
   key: number;
@@ -10,7 +10,7 @@ export type TabProps = {
   tabs: keyValue[];
 };
 
-const Sortingtag: React.FC<TabProps> = ({ tabs }) => {
+const Tab: React.FC<TabProps> = ({ tabs }) => {
   const handleClick = (tab: keyValue) => {
     console.log(tab.key);
   };
@@ -28,4 +28,4 @@ const Sortingtag: React.FC<TabProps> = ({ tabs }) => {
   );
 };
 
-export default Sortingtag;
+export default Tab;
