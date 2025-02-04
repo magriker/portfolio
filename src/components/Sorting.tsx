@@ -1,4 +1,5 @@
 import Tab from "./Tab";
+import "../tab.css";
 
 const Sorting = () => {
   return (
@@ -11,6 +12,7 @@ const Sorting = () => {
           { key: 4, value: "Graphic" },
         ]}
       ></Tab>
+      <div className="product-box"></div>
     </>
   );
 };

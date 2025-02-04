@@ -1,6 +1,7 @@
 import "../App.css";
 import Label from "./Label";
 import Tab from "./Tab";
+import "../Header.css";
 
 const Header = () => {
   return (
@@ -19,7 +20,15 @@ const Header = () => {
             prototyping. Based in Tokyo.
           </Label>
         </div>
-        <nav className="navigation"></nav>
+        <nav className="navigation">
+          <Tab
+            tabs={[
+              { key: 1, value: "work" },
+              { key: 2, value: "about" },
+              { key: 3, value: "content" },
+            ]}
+          ></Tab>
+        </nav>
         <div className="language-box"></div>
       </div>
     </div>

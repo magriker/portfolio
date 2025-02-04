@@ -1,0 +1,49 @@
+.header-container {
+  height: 162px;
+  width: 377px;
+  position: relative;
+}
+
+.navigation {
+  position: absolute;
+  width: 191px;
+  height: 18px;
+  top: 144px;
+  /* left: 779px; */
+  border: 1px solid blue;
+}
+
+.language-box {
+  border: 1px solid blue;
+  height: 73px;
+  width: 32px;
+  position: absolute;
+  top: 0;
+  left: 345px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-container {
+    height: 215px;
+    width: 1155px;
+    position: relative;
+  }
+
+  .navigation {
+    position: absolute;
+    width: 297px;
+    height: 30px;
+    top: 10px;
+    left: 779px;
+    border: 1px solid blue;
+  }
+
+  .language-box {
+    border: 1px solid blue;
+    height: 115px;
+    width: 49px;
+    position: absolute;
+    top: 0;
+    left: 1106px;
+  }
+}
