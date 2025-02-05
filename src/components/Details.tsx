@@ -1,5 +1,14 @@
 const Details = () => {
-  return <div>Details!!</div>;
+  return (
+    <>
+      <div className="back"></div>
+      <div className="detail-box">
+        <div className="product-name"></div>
+        <div className="product-pictures"></div>
+        <div className="detailed-explanation"></div>
+      </div>
+    </>
+  );
 };
 
 export default Details;
