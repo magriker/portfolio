@@ -1,7 +1,7 @@
 const Details = () => {
   return (
     <>
-      <div className="back"></div>
+      <div className="backbutton"></div>
       <div className="detail-box">
         <div className="product-name"></div>
         <div className="product-pictures"></div>
