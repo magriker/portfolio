@@ -1,9 +1,25 @@
 .product-box {
   width: 381px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  row-gap: 16px;
+}
+
+.main-img {
+  width: 181px;
+  border-radius: 4px;
 }
 
 @media screen and (min-width: 768px) {
   .product-box {
     width: 1156px;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 32px;
+  }
+
+  .main-img {
+    width: 363px;
   }
 }

@@ -1,7 +1,7 @@
 .tag-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 30px;
   width: auto;
   height: 18px;
 }
