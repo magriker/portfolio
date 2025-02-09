@@ -7,3 +7,18 @@
   width: 384px;
   height: auto;
 }
+
+.backbutton {
+  transition: all 0.1s;
+  display: inline-block;
+}
+
+.backbutton:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 30px;
+  display: inline-block;
+}
