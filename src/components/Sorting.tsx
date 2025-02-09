@@ -3,6 +3,7 @@ import "../tab.css";
 import "../Sorting.css";
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Sorting = () => {
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
@@ -38,12 +39,17 @@ const Sorting = () => {
 
       <div className="product-box">
         {producs.map((product) => (
-          <img
-            src={product.main_img_url}
-            alt="main image"
-            className="main-img"
+          <Link
+            to={`/details/${product.id}`}
             key={product.id}
-          ></img>
+            className="product-link"
+          >
+            <img
+              src={product.main_img_url}
+              alt="main image"
+              className="main-img"
+            ></img>
+          </Link>
         ))}
       </div>
     </>
