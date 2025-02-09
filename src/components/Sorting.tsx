@@ -2,17 +2,19 @@ import Tab from "./Tab";
 import "../tab.css";
 import "../Sorting.css";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Sorting = () => {
+  const navigate = useNavigate();
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [producs, setProducts] = useState([] as any[]);
+  const [products, setProducts] = useState([] as any[]);
 
   async function fetchProducts() {
     const { data, error } = await supabase
@@ -26,6 +28,10 @@ const Sorting = () => {
     fetchProducts();
   }, []);
 
+  const toDetaliPage = (product: object, productId: number) => {
+    navigate(`/details/:${productId}`, { state: { product } });
+  };
+
   return (
     <>
       <Tab
@@ -38,9 +44,9 @@ const Sorting = () => {
       ></Tab>
 
       <div className="product-box">
-        {producs.map((product) => (
-          <Link
-            to={`/details/${product.id}`}
+        {products.map((product) => (
+          <a
+            onClick={() => toDetaliPage(product, product.id)}
             key={product.id}
             className="product-link"
           >
@@ -49,7 +55,7 @@ const Sorting = () => {
               alt="main image"
               className="main-img"
             ></img>
-          </Link>
+          </a>
         ))}
       </div>
     </>
