@@ -9,16 +9,40 @@
 }
 
 .backbutton {
-  transition: all 0.1s;
+  transition: all 0.2s;
   display: inline-block;
 }
 
 .backbutton:hover {
-  font-weight: bold;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .arrow {
-  width: 30px;
+  width: 17px;
   display: inline-block;
+  font-size: 13px;
+  color: #263680;
+  transition: all 0.2s;
+}
+
+.backbutton:hover .arrow {
+  transform: translateX(-1px);
+  font-weight: 700;
+}
+
+.product-name {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .arrow {
+    width: 22px;
+    font-size: 20px;
+  }
+
+  .backbutton:hover .arrow {
+    transform: translateX(-3px);
+  }
 }
