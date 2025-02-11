@@ -15,7 +15,6 @@
 
 .backbutton:hover {
   cursor: pointer;
-  font-weight: 700;
 }
 
 .arrow {
@@ -36,13 +35,82 @@
   margin-bottom: 15px;
 }
 
+.subimg-box {
+  width: 384px;
+  height: auto;
+  margin-bottom: 36px;
+}
+
+.subimg-1 {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.subimg-box-second {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 16px;
+}
+
+.subimg-2,
+.subimg-3 {
+  max-width: 184px;
+  border-radius: 4px;
+}
+
+.detailed-description-box {
+  width: 384px;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+.about {
+  margin-bottom: 16px;
+}
+
+.description {
+  overflow-wrap: break-word;
+}
+
 @media screen and (min-width: 768px) {
   .arrow {
-    width: 22px;
+    width: 25px;
     font-size: 20px;
   }
 
   .backbutton:hover .arrow {
     transform: translateX(-3px);
+    font-weight: 700;
+  }
+
+  .subimg-box {
+    width: 1174px;
+    height: auto;
+    margin-bottom: 32px;
+  }
+
+  .subimg-1 {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+  .subimg-box-second {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 32px;
+  }
+
+  .subimg-2,
+  .subimg-3 {
+    max-width: 571px;
+    border-radius: 4px;
+  }
+
+  .detailed-description-box {
+    width: 1174px;
+    height: auto;
+    margin-bottom: 85pxpx;
   }
 }
