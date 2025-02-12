@@ -15,6 +15,12 @@ const Sorting = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [products, setProducts] = useState([] as any[]);
+  const [category, setCategory] = useState("all");
+
+  const filteredProducts =
+    category === "all"
+      ? products
+      : products.filter((product) => product.category === category);
 
   async function fetchProducts() {
     const { data, error } = await supabase
@@ -32,9 +38,12 @@ const Sorting = () => {
     navigate(`/details/:${productId}`, { state: { product } });
   };
 
+  console.log(filteredProducts);
+
   return (
     <>
       <Tab
+        setCategory={setCategory}
         tabs={[
           { key: 1, value: `all` },
           { key: 2, value: "Product" },
@@ -44,7 +53,7 @@ const Sorting = () => {
       ></Tab>
 
       <div className="product-box">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <a
             onClick={() => toDetaliPage(product, product.id)}
             key={product.id}
