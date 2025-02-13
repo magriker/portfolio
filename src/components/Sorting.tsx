@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { CATEGORIES, CATEGORIES_LABEL } from "../constants";
 
 const Sorting = () => {
   const navigate = useNavigate();
@@ -42,15 +43,7 @@ const Sorting = () => {
 
   return (
     <>
-      <Tab
-        setCategory={setCategory}
-        tabs={[
-          { key: 1, value: `all` },
-          { key: 2, value: "Product" },
-          { key: 3, value: "Packaging" },
-          { key: 4, value: "Graphic" },
-        ]}
-      ></Tab>
+      <Tab setCategory={setCategory} tabs={CATEGORIES_LABEL}></Tab>
 
       <div className="product-box">
         {filteredProducts.map((product) => (
