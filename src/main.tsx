@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import Details from "./components/Details.tsx";
 import Admin from "./components/admin/Admin.tsx";
 import Create from "./components/admin/create.tsx";
+import Edit from "./components/admin/Edit.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/create",
     element: <Create></Create>,
+  },
+  {
+    path: "/admin/edit",
+    element: <Edit></Edit>,
   },
 ]);
 

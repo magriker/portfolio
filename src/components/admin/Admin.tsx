@@ -14,7 +14,7 @@ const Admin = () => {
 
   async function fetchProducts() {
     const { data, error } = await supabase
-      .from("Producs")
+      .from("Products")
       .select("*")
       .order("created_at", { ascending: true });
     if (!error) setProducts(data);
@@ -24,18 +24,25 @@ const Admin = () => {
     fetchProducts();
   }, []);
 
-  const handleClick = () => {
+  const toCreatePage = () => {
     navigate("/admin/create");
+  };
+
+  const toEditPage = (p: object) => {
+    console.log(p);
+
+    navigate("/admin/edit", { state: { p } });
   };
 
   return (
     <div>
-      <button onClick={handleClick}>登録</button>
+      <button onClick={toCreatePage}>登録</button>
       <table>
         <tbody>
           <tr>
             <th>id</th>
             <th>name</th>
+            <th>edit</th>
             {/* <th>created_at</th> */}
 
             {/* <th>main_img</th>
@@ -48,9 +55,12 @@ const Admin = () => {
             <th>updated_at</th> */}
           </tr>
           {products.map((p) => (
-            <tr>
+            <tr key={p.id}>
               <th>{p.id}</th>
               <th>{p.name}</th>
+              <th>
+                <button onClick={() => toEditPage(p)}>編集</button>
+              </th>
               {/* <th>{p.created_at}</th> */}
               {/* <th>{p.main_img_url}</th>
               <th>{p.sub1_img_url}</th>
