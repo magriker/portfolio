@@ -7,6 +7,7 @@ import Details from "./components/Details.tsx";
 import Admin from "./components/admin/Admin.tsx";
 import Create from "./components/admin/create.tsx";
 import Edit from "./components/admin/Edit.tsx";
+import Delete from "./components/admin/Delete.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/edit",
     element: <Edit></Edit>,
+  },
+  {
+    path: "/admin/delete",
+    element: <Delete></Delete>,
   },
 ]);
 
