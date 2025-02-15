@@ -29,9 +29,11 @@ const Admin = () => {
   };
 
   const toEditPage = (p: object) => {
-    console.log(p);
-
     navigate("/admin/edit", { state: { p } });
+  };
+
+  const toDeletePage = (p: object) => {
+    navigate("/admin/delete", { state: { p } });
   };
 
   return (
@@ -42,7 +44,9 @@ const Admin = () => {
           <tr>
             <th>id</th>
             <th>name</th>
+            <th>category</th>
             <th>edit</th>
+            <th>Delete</th>
             {/* <th>created_at</th> */}
 
             {/* <th>main_img</th>
@@ -58,8 +62,12 @@ const Admin = () => {
             <tr key={p.id}>
               <th>{p.id}</th>
               <th>{p.name}</th>
+              <th>{p.category}</th>
               <th>
                 <button onClick={() => toEditPage(p)}>編集</button>
+              </th>
+              <th>
+                <button onClick={() => toDeletePage(p)}>削除</button>
               </th>
               {/* <th>{p.created_at}</th> */}
               {/* <th>{p.main_img_url}</th>

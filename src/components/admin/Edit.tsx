@@ -4,11 +4,11 @@ import { useLocation, useNavigate } from "react-router";
 import { CATEGORIES } from "../../constants";
 
 const Edit = () => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0].key);
   const location = useLocation();
   const product = location.state.p;
+  const [name, setName] = useState(product.name);
+  const [description, setDescription] = useState(product.description);
+  const [category, setCategory] = useState(product.category);
 
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
@@ -32,21 +32,21 @@ const Edit = () => {
           <label>名前</label>
           <input
             type="text"
-            defaultValue={product.name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div>
           <label>説明</label>
           <textarea
-            defaultValue={product.description}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div>
           <label>カテゴリー</label>
           <select
-            defaultValue={product.category}
+            value={category}
             onChange={(e) => setCategory(+e.target.value)}
           >
             {CATEGORIES.map((c) => (
