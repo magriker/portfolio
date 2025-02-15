@@ -25,7 +25,7 @@ const Sorting = () => {
 
   async function fetchProducts() {
     const { data, error } = await supabase
-      .from("Producs")
+      .from("Products")
       .select("*")
       .order("created_at", { ascending: true });
     if (!error) setProducts(data);
