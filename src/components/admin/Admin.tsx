@@ -40,7 +40,7 @@ const Admin = () => {
     <div>
       <button onClick={toCreatePage}>登録</button>
       <table>
-        <tbody>
+        <thead>
           <tr>
             <th>id</th>
             <th>name</th>
@@ -58,6 +58,8 @@ const Admin = () => {
             <th>description</th>
             <th>updated_at</th> */}
           </tr>
+        </thead>
+        <tbody>
           {products.map((p) => (
             <tr key={p.id}>
               <th>{p.id}</th>
