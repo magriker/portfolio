@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Label from "../Label";
+import "../../Admin.css";
 
 const Admin = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,14 +41,34 @@ const Admin = () => {
   return (
     <div>
       <button onClick={toCreatePage}>登録</button>
-      <table>
+      <table className="content-table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>category</th>
-            <th>edit</th>
-            <th>Delete</th>
+            <th>
+              <Label size="m" bold>
+                aid
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold>
+                name
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold>
+                category
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold>
+                edit
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold>
+                Delete
+              </Label>
+            </th>
             {/* <th>created_at</th> */}
 
             {/* <th>main_img</th>
