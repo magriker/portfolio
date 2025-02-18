@@ -3,6 +3,10 @@
   font-family: "Wix Madefor Display", serif;
 }
 
+.white {
+  color: white !important;
+}
+
 .bold {
   font-weight: 700;
 }
