@@ -40,32 +40,34 @@ const Admin = () => {
 
   return (
     <div>
-      <button onClick={toCreatePage}>登録</button>
+      <button onClick={toCreatePage} className="button">
+        Register
+      </button>
       <table className="content-table">
         <thead>
           <tr>
             <th>
-              <Label size="m" bold>
-                aid
+              <Label size="m" bold white>
+                id
               </Label>
             </th>
             <th>
-              <Label size="m" bold>
+              <Label size="m" bold white>
                 name
               </Label>
             </th>
             <th>
-              <Label size="m" bold>
+              <Label size="m" bold white>
                 category
               </Label>
             </th>
             <th>
-              <Label size="m" bold>
+              <Label size="m" bold white>
                 edit
               </Label>
             </th>
             <th>
-              <Label size="m" bold>
+              <Label size="m" bold white>
                 Delete
               </Label>
             </th>
@@ -84,14 +86,24 @@ const Admin = () => {
         <tbody>
           {products.map((p) => (
             <tr key={p.id}>
-              <th>{p.id}</th>
-              <th>{p.name}</th>
-              <th>{p.category}</th>
               <th>
-                <button onClick={() => toEditPage(p)}>編集</button>
+                <Label size="s">{p.id}</Label>
               </th>
               <th>
-                <button onClick={() => toDeletePage(p)}>削除</button>
+                <Label size="s">{p.name}</Label>
+              </th>
+              <th>
+                <Label size="s">{p.category}</Label>
+              </th>
+              <th>
+                <button onClick={() => toEditPage(p)} className="button">
+                  edit
+                </button>
+              </th>
+              <th>
+                <button onClick={() => toDeletePage(p)} className="button">
+                  delete
+                </button>
               </th>
               {/* <th>{p.created_at}</th> */}
               {/* <th>{p.main_img_url}</th>
