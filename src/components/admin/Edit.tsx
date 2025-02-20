@@ -2,6 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { CATEGORIES } from "../../constants";
+import "../../Edit.css";
+import Label from "../Label";
 
 const Edit = () => {
   const location = useLocation();
@@ -25,10 +27,20 @@ const Edit = () => {
     navigate("/admin");
   };
 
+  const handleBack = () => {
+    navigate("/admin");
+  };
+
   return (
     <div>
+      <a onClick={() => handleBack()}>
+        <span className="arrow">&larr;</span>
+        <Label size="s" hover>
+          back
+        </Label>
+      </a>
       <form onSubmit={handnleEdit}>
-        <div>
+        <div className="product-name">
           <label>名前</label>
           <input
             type="text"
@@ -36,14 +48,14 @@ const Edit = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div>
+        <div className="description">
           <label>説明</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div>
+        <div className="category">
           <label>カテゴリー</label>
           <select
             value={category}
@@ -56,7 +68,9 @@ const Edit = () => {
             ))}
           </select>
         </div>
-        <button type="submit">登録</button>
+        <button type="submit" className="submit-button">
+          登録
+        </button>
       </form>
     </div>
   );
