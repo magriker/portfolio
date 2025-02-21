@@ -8,8 +8,8 @@ const Create = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
-  const [imgUrl, setImgUrl] = useState("");
   const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
 
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
@@ -20,31 +20,29 @@ const Create = () => {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
-    console.log("登録");
     await supabase.from("Products").insert({ name, description, category });
+
+    if (imageFile) {
+      uploadImageFile();
+    }
+
     navigate("/admin");
   };
 
-  const handleUpload2 = async (e) => {
-    const file = e.target.files[0];
-    const filePath = `${v4()}-${file.name}`;
+  const uploadImageFile = async () => {
+    const filePath = `${v4()}-${imageFile.name}`;
     console.log(filePath);
-    console.log(file);
     const { data, error } = await supabase.storage
       .from("Product_img")
-      .upload(filePath, file);
+      .upload(filePath, imageFile);
     if (error) {
       console.log(error.message);
-    } else {
-      const { data } = supabase.storage
-        .from("Product_img")
-        .getPublicUrl(filePath);
-      setImgUrl(data.publicUrl);
     }
   };
-
   const handleUpload = (event) => {
     const file = event.target.files[0];
+    setImageFile(file);
+
     if (file) {
       setImage(URL.createObjectURL(file));
     }
