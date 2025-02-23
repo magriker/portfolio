@@ -9,6 +9,7 @@ const Create = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
   const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState(null);
 
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
@@ -20,25 +21,32 @@ const Create = () => {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
-    await supabase.from("Products").insert({ name, description, category });
-
     if (imageFile) {
-      uploadImageFile();
+      const filePath = `${v4()}-${imageFile.name}`;
+      console.log(filePath);
+      const { data, error } = await supabase.storage
+        .from("Product_img")
+        .upload(filePath, imageFile);
+      if (error) {
+        console.log(error);
+      } else {
+        const data = await supabase.storage
+          .from("Product_img")
+          .getPublicUrl(filePath);
+
+        const url = data.data.publicUrl;
+        setImageUrl(url);
+      }
     }
+    console.log(imageUrl);
+
+    await supabase
+      .from("Products")
+      .insert({ name, description, category, main_img_url: imageUrl });
 
     navigate("/admin");
   };
 
-  const uploadImageFile = async () => {
-    const filePath = `${v4()}-${imageFile.name}`;
-    console.log(filePath);
-    const { data, error } = await supabase.storage
-      .from("Product_img")
-      .upload(filePath, imageFile);
-    if (error) {
-      console.log(error.message);
-    }
-  };
   const handleUpload = (event) => {
     const file = event.target.files[0];
     setImageFile(file);
