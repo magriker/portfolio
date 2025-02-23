@@ -1,5 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useLocation, useNavigate } from "react-router";
+import Label from "../Label";
+import "../../Admin.css";
 
 const Delete = () => {
   const location = useLocation();
@@ -17,19 +19,45 @@ const Delete = () => {
 
   return (
     <div>
-      <table>
+      <table className="content-table">
+        <thead>
+          <tr>
+            <th>
+              <Label size="m" bold white>
+                id
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold white>
+                name
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold white>
+                description
+              </Label>
+            </th>
+            <th>
+              <Label size="m" bold white>
+                category
+              </Label>
+            </th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>description</th>
-            <th>category</th>
-          </tr>
-          <tr>
-            <th>{product.id}</th>
-            <th>{product.name}</th>
-            <th>{product.description}</th>
-            <th>{product.category}</th>
+            <th>
+              <Label size="m">{product.id}</Label>
+            </th>
+            <th>
+              <Label size="m">{product.name}</Label>
+            </th>
+            <th>
+              <Label size="m">{product.description}</Label>
+            </th>
+            <th>
+              <Label size="m">{product.category}</Label>
+            </th>
           </tr>
         </tbody>
       </table>
