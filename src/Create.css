@@ -1,0 +1,30 @@
+.create {
+  height: auto;
+  width: 384px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input {
+  padding: 5px 10px;
+  width: 200px;
+}
+
+form textarea {
+  width: 200px;
+  height: 150px;
+  padding: 5px 10px;
+}

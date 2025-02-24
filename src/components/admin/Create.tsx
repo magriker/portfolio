@@ -3,6 +3,8 @@ import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";
 import { v4 } from "uuid";
+import Label from "../Label";
+import "../../Create.css";
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -60,25 +62,38 @@ const Create = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>名前</label>
+    <div className="create">
+      <p className="create-title">
+        <label>
+          <Label size="l" bold>
+            Register
+          </Label>
+        </label>
+      </p>
+      <form onSubmit={handleSubmit} className="create-form">
+        <div className="name-form">
+          <label>
+            <Label size="s">Name</Label>
+          </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div>
-          <label>説明</label>
+        <div className="description-form">
+          <label>
+            <Label size="s">Description</Label>
+          </label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div>
-          <label>カテゴリー</label>
+        <div className="category-form">
+          <label>
+            <Label size="s">Category</Label>
+          </label>
           <select
             value={category}
             onChange={(e) => setCategory(+e.target.value)}
