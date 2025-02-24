@@ -14,6 +14,7 @@ const Delete = () => {
 
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
+
     navigate("/admin");
   };
 

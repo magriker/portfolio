@@ -24,20 +24,23 @@ const Create = () => {
     if (imageFile) {
       const filePath = `${v4()}-${imageFile.name}`;
       console.log(filePath);
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from("Product_img")
         .upload(filePath, imageFile);
       if (error) {
         console.log(error);
       } else {
-        const data = await supabase.storage
+        const { data } = await supabase.storage
           .from("Product_img")
           .getPublicUrl(filePath);
+        console.log(data);
 
-        const url = data.data.publicUrl;
+        const url = data.publicUrl;
         setImageUrl(url);
+        console.log(url);
       }
     }
+
     console.log(imageUrl);
 
     await supabase
