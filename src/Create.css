@@ -13,6 +13,19 @@
   width: auto;
 }
 
+.description-form textarea {
+  resize: none;
+}
+
+.category-form {
+  width: auto;
+}
+
+.category-form select {
+  width: 150px;
+  padding: 5px 10px;
+}
+
 form label {
   display: block;
   margin-top: 10px;
