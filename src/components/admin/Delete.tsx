@@ -2,9 +2,10 @@ import { createClient } from "@supabase/supabase-js";
 import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
 import "../../Admin.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Delete = () => {
+  const [targetUrl, setTargetUrl] = useState("");
   const location = useLocation();
   const product = location.state.p;
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
@@ -17,13 +18,15 @@ const Delete = () => {
 
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
+    await supabase.storage.from("Product_img").remove(targetUrl);
 
     // await supabase.storage.from("Product_img").remove();
     navigate("/admin");
   };
 
   useEffect(() => {
-    console.log(product.main_img_url);
+    const url = product.main_img_url.replace(supabaseStoragePath, "");
+    setTargetUrl(url);
   }, []);
 
   return (
