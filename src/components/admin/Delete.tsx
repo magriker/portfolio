@@ -5,12 +5,12 @@ import "../../Admin.css";
 import { useEffect, useState } from "react";
 
 const Delete = () => {
-  const [targetUrl, setTargetUrl] = useState("");
   const location = useLocation();
   const product = location.state.p;
+  const url = product.main_img_url;
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-  const supabaseStoragePath =
-    "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img//";
+  const supabaseImageUrl =
+    "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -18,16 +18,13 @@ const Delete = () => {
 
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
-    await supabase.storage.from("Product_img").remove(targetUrl);
+    await supabase.storage
+      .from("Product_img")
+      .remove(url.replace(supabaseImageUrl, ""));
 
     // await supabase.storage.from("Product_img").remove();
     navigate("/admin");
   };
-
-  useEffect(() => {
-    const url = product.main_img_url.replace(supabaseStoragePath, "");
-    setTargetUrl(url);
-  }, []);
 
   return (
     <div>
