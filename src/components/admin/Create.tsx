@@ -2,11 +2,12 @@ import { useState } from "react";
 import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";
+import { FileUploader } from "react-drag-drop-files";
 import { v4 } from "uuid";
 import Label from "../Label";
 import "../../Create.css";
-const supabaseStoragePath =
-  "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img//";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
@@ -19,6 +20,7 @@ const Create = () => {
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [imagePath, setimagePath] = useState("");
+  const [file, setFile] = useState(null);
 
   const navigate = useNavigate();
 
@@ -30,17 +32,21 @@ const Create = () => {
         .upload(imagePath, imageFile);
       if (error) {
         console.log(error);
+        return;
       }
     }
 
-    console.log(imagePath);
-    console.log(supabaseStoragePath + imagePath);
+    const url = await supabase.storage
+      .from("Product_img")
+      .getPublicUrl(imagePath).data.publicUrl;
+
+    console.log(url);
 
     await supabase.from("Products").insert({
       name,
       description,
       category,
-      main_img_url: supabaseStoragePath + imagePath,
+      main_img_url: url,
     });
 
     navigate("/admin");
@@ -56,6 +62,11 @@ const Create = () => {
     if (file) {
       setImage(URL.createObjectURL(file));
     }
+  };
+
+  const handleChange = (file) => {
+    setFile(file);
+    console.log(file);
   };
 
   return (
@@ -107,7 +118,15 @@ const Create = () => {
           <input type="file" onChange={handleUpload} />
           <img src={image} alt="" width={100} />
         </div>
-        <button type="submit">編集</button>
+
+        <FileUploader
+          handleChange={handleChange}
+          name="file"
+          types={fileTypes}
+          multiple
+        />
+
+        <button type="submit">Register</button>
       </form>
     </div>
   );
