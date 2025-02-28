@@ -119,13 +119,14 @@ const Create = () => {
           <img src={image} alt="" width={100} />
         </div>
 
-        <FileUploader
-          handleChange={handleChange}
-          name="file"
-          types={fileTypes}
-          multiple
-        />
-
+        <div className="file-drop">
+          <FileUploader
+            handleChange={handleChange}
+            name="file"
+            types={fileTypes}
+            multiple
+          ></FileUploader>
+        </div>
         <button type="submit">Register</button>
       </form>
     </div>
