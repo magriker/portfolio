@@ -113,19 +113,23 @@ const Create = () => {
             ))}
           </select>
         </div>
-        <div>
-          <label>ファイル</label>
+        <div className="main-img-form">
+          <label>
+            <Label size="s">Main image file</Label>
+          </label>
           <input type="file" onChange={handleUpload} />
           <img src={image} alt="" width={100} />
         </div>
 
-        <div className="file-drop">
+        <div className="file-drop-box">
           <FileUploader
             handleChange={handleChange}
             name="file"
             types={fileTypes}
             multiple
-          ></FileUploader>
+          >
+            <p>Drop Here!!</p>
+          </FileUploader>
         </div>
         <button type="submit">Register</button>
       </form>
