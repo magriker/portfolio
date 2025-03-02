@@ -1,3 +1,5 @@
+/* @import "tailwindcss"; */
+
 .create {
   height: auto;
   width: 384px;
@@ -40,6 +42,31 @@ form textarea {
   width: 200px;
   height: 150px;
   padding: 5px 10px;
+}
+
+.mainImg-drop-box {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainImg-drop-box label {
+  align-self: start;
+}
+
+.mainImg-drop-box input[type="file"] {
+  padding: 10px;
+  outline: none;
+}
+
+.mainImg-drop-box input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 14px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background-color: white;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 10px;
 }
 
 .file-drop-box {
