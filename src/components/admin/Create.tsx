@@ -6,6 +6,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { v4 } from "uuid";
 import Label from "../Label";
 import "../../Create.css";
+import "tailwindcss";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
@@ -113,19 +114,24 @@ const Create = () => {
             ))}
           </select>
         </div>
-        <div>
-          <label>ファイル</label>
+        <div className="mainImg-drop-box">
+          <label>
+            <Label size="s">Main image file</Label>
+          </label>
           <input type="file" onChange={handleUpload} />
           <img src={image} alt="" width={100} />
         </div>
 
-        <FileUploader
-          handleChange={handleChange}
-          name="file"
-          types={fileTypes}
-          multiple
-        />
-
+        <div className="file-drop-box">
+          <FileUploader
+            handleChange={handleChange}
+            name="file"
+            types={fileTypes}
+            multiple
+          >
+            <p className="underline">Drop Here!!</p>
+          </FileUploader>
+        </div>
         <button type="submit">Register</button>
       </form>
     </div>
