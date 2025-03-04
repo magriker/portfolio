@@ -98,3 +98,7 @@ form textarea {
   margin: 0;
   font-size: 14px;
 }
+
+.dropped-img {
+  width: 150px;
+}
