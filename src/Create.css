@@ -49,6 +49,7 @@ form textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .mainImg-drop-box label {
@@ -58,6 +59,7 @@ form textarea {
 .mainImg-drop-box input[type="file"] {
   padding: 10px;
   outline: none;
+  cursor: pointer;
 }
 
 .mainImg-drop-box input[type="file"]::file-selector-button {
@@ -67,25 +69,31 @@ form textarea {
   background-color: white;
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
   margin-right: 10px;
+  cursor: pointer;
 }
 
-.file-drop-box {
+.subImg-drop-box {
+  margin-top: 20px;
+}
+
+.uploader {
   width: auto;
   border: 1px dotted #263068;
   margin-top: 10px;
   text-align: center;
   width: 200px;
 }
-.file-drop-box label {
+
+.uploader label {
   padding: 20px;
   margin: 0;
 }
 
-.file-drop-box :hover {
+.uploader :hover {
   cursor: pointer;
 }
 
-.file-drop-box p {
+.subImg-drop-box p {
   height: auto;
   margin: 0;
   font-size: 14px;

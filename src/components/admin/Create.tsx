@@ -122,15 +122,21 @@ const Create = () => {
           <img src={image} alt="" width={100} />
         </div>
 
-        <div className="file-drop-box">
-          <FileUploader
-            handleChange={handleChange}
-            name="file"
-            types={fileTypes}
-            multiple
-          >
-            <p className="underline">Drop Here!!</p>
-          </FileUploader>
+        <div className="subImg-drop-box">
+          <label>
+            <Label size="s">Sub image files</Label>
+          </label>
+          <div className="uploader">
+            <FileUploader
+              handleChange={handleChange}
+              name="file"
+              types={fileTypes}
+              multiple
+            >
+              <p className="underline">Drop Here!!</p>
+            </FileUploader>
+            {file ? <p>{file.name}</p> : ""}
+          </div>
         </div>
         <button type="submit">Register</button>
       </form>
