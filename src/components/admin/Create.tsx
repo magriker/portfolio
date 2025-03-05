@@ -21,7 +21,9 @@ const Create = () => {
   const [mainImage, setMainImage] = useState(null);
   const [mainImageFile, setMainImageFile] = useState(null);
   const [mainImagePath, setMainImagePath] = useState("");
+  const [subImages, setSubImages] = useState([]);
   const [subImagefiles, setSubImageFiles] = useState([]);
+  const [subImagePaths, setSubImagePaths] = useState([]);
 
   const navigate = useNavigate();
 
@@ -65,14 +67,18 @@ const Create = () => {
   };
 
   const handleChange = (file) => {
-    if (subImagefiles.length > 2) {
+    if (subImages.length > 2) {
       alert("You can upload only 3 sub image files ");
       return;
     }
     console.log(subImagefiles);
+    console.log(subImagePaths);
 
     const subimage = file[0];
-    setSubImageFiles([...subImagefiles, URL.createObjectURL(subimage)]);
+    const subImgPath = `${v4()}-${subimage.name}`;
+    setSubImageFiles([...subImagefiles, subimage]);
+    setSubImagePaths([...subImagePaths, subImgPath]);
+    setSubImages([...subImages, URL.createObjectURL(subimage)]);
   };
 
   return (
@@ -124,7 +130,7 @@ const Create = () => {
             <Label size="s">Main image file</Label>
           </label>
           <input type="file" onChange={handleUpload} />
-          <img src={mainImage} alt="" width={100} />
+          <img src={mainImage} alt="" width={200} />
         </div>
 
         <div className="subImg-drop-box">
@@ -140,7 +146,7 @@ const Create = () => {
             >
               <p className="underline">Drop Here!!</p>
             </FileUploader>
-            {subImagefiles?.map((subimg, index) => (
+            {subImages?.map((subimg, index) => (
               <img src={subimg} className="dropped-img" key={index}></img>
             ))}
           </div>
