@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";
@@ -18,19 +18,21 @@ const Create = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
-  const [image, setImage] = useState(null);
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePath, setimagePath] = useState("");
-  const [file, setFile] = useState(null);
+  const [mainImage, setMainImage] = useState(null);
+  const [mainImageFile, setMainImageFile] = useState(null);
+  const [mainImagePath, setMainImagePath] = useState("");
+  const [subImages, setSubImages] = useState([]);
+  const [subImagefiles, setSubImageFiles] = useState([]);
+  const [subImagePaths, setSubImagePaths] = useState([]);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
-    if (imageFile) {
+    if (mainImageFile) {
       const { error } = await supabase.storage
         .from("Product_img")
-        .upload(imagePath, imageFile);
+        .upload(mainImagePath, mainImageFile);
       if (error) {
         console.log(error);
         return;
@@ -39,7 +41,7 @@ const Create = () => {
 
     const url = await supabase.storage
       .from("Product_img")
-      .getPublicUrl(imagePath).data.publicUrl;
+      .getPublicUrl(mainImagePath).data.publicUrl;
 
     console.log(url);
 
@@ -55,19 +57,28 @@ const Create = () => {
 
   const handleUpload = (event) => {
     const file = event.target.files[0];
-    setImageFile(file);
+    setMainImageFile(file);
     const path = `${v4()}-${file.name}`;
-    setimagePath(path);
-    console.log(path);
+    setMainImagePath(path);
 
     if (file) {
-      setImage(URL.createObjectURL(file));
+      setMainImage(URL.createObjectURL(file));
     }
   };
 
   const handleChange = (file) => {
-    setFile(file);
-    console.log(file);
+    if (subImages.length > 2) {
+      alert("You can upload only 3 sub image files ");
+      return;
+    }
+    console.log(subImagefiles);
+    console.log(subImagePaths);
+
+    const subimage = file[0];
+    const subImgPath = `${v4()}-${subimage.name}`;
+    setSubImageFiles([...subImagefiles, subimage]);
+    setSubImagePaths([...subImagePaths, subImgPath]);
+    setSubImages([...subImages, URL.createObjectURL(subimage)]);
   };
 
   return (
@@ -119,7 +130,7 @@ const Create = () => {
             <Label size="s">Main image file</Label>
           </label>
           <input type="file" onChange={handleUpload} />
-          <img src={image} alt="" width={100} />
+          <img src={mainImage} alt="" width={200} />
         </div>
 
         <div className="subImg-drop-box">
@@ -135,7 +146,9 @@ const Create = () => {
             >
               <p className="underline">Drop Here!!</p>
             </FileUploader>
-            {file ? <p>{file.name}</p> : ""}
+            {subImages?.map((subimg, index) => (
+              <img src={subimg} className="dropped-img" key={index}></img>
+            ))}
           </div>
         </div>
         <button type="submit">Register</button>
