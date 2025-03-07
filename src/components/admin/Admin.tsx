@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Label from "../Label";
 import "../../Admin.css";
+import { CATEGORIES } from "../../constants";
 
 const Admin = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -93,7 +94,9 @@ const Admin = () => {
                 <Label size="s">{p.name}</Label>
               </th>
               <th>
-                <Label size="s">{p.category}</Label>
+                <Label size="s">
+                  {CATEGORIES.find((c) => c.key === +p.category)?.value}
+                </Label>
               </th>
               <th>
                 <button onClick={() => toEditPage(p)} className="button">
