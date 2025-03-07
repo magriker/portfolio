@@ -1,8 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
 import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
-import "../../Admin.css";
 import { useEffect, useState } from "react";
+import { CATEGORIES } from "../../constants";
+import "../../Delete.css";
 
 const Delete = () => {
   const location = useLocation();
@@ -28,48 +29,34 @@ const Delete = () => {
 
   return (
     <div>
-      <table className="content-table">
-        <thead>
-          <tr>
-            <th>
-              <Label size="m" bold white>
-                id
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                name
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                description
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                category
-              </Label>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>
-              <Label size="m">{product.id}</Label>
-            </th>
-            <th>
-              <Label size="m">{product.name}</Label>
-            </th>
-            <th>
-              <Label size="m">{product.description}</Label>
-            </th>
-            <th>
-              <Label size="m">{product.category}</Label>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+      <div className="card">
+        <div className="card-top">
+          <div className="id">
+            <Label size="s">ID:</Label>
+            <Label size="s" bold>
+              {product.id}
+            </Label>
+          </div>
+          <div className="name">
+            <Label size="s">Name:</Label>
+            <Label size="s" bold>
+              {product.name}
+            </Label>
+          </div>
+          <div className="category">
+            <Label size="s">Category:</Label>
+            <Label size="s" bold>
+              {CATEGORIES.find((c) => c.key === +product.category)?.value}
+            </Label>
+          </div>
+        </div>
+        <div className="description-box">
+          <p>
+            <Label size="s">Description:</Label>
+          </p>
+          <div>{product.description}</div>
+        </div>
+      </div>
 
       <p>Would you like to delete the date above?</p>
       <button onClick={handleDelete}>Delete</button>

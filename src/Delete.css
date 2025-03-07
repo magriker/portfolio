@@ -1,0 +1,13 @@
+.card {
+  border: 1px solid #263680;
+  width: 250px;
+}
+
+.description-box p {
+  margin: 0;
+}
+
+.description-box div {
+  padding: 8px;
+  overflow-wrap: break-word;
+}
