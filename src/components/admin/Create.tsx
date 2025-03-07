@@ -9,6 +9,8 @@ import "../../Create.css";
 import "tailwindcss";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
+const supabaseImageUrl =
+  "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
 const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
@@ -23,8 +25,6 @@ const Create = () => {
   const [mainImagePath, setMainImagePath] = useState("");
   const [subImages, setSubImages] = useState([]);
   const [subImagefiles, setSubImageFiles] = useState([]);
-  const [subImagePaths, setSubImagePaths] = useState([]);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e: Event) => {
@@ -39,17 +39,36 @@ const Create = () => {
       }
     }
 
-    const url = await supabase.storage
-      .from("Product_img")
-      .getPublicUrl(mainImagePath).data.publicUrl;
-
-    console.log(url);
+    if (subImagefiles.length) {
+      subImagefiles.map(async (subimgfile) => {
+        console.log("test:", subimgfile);
+        const { error } = await supabase.storage
+          .from("Product_img")
+          .upload(subimgfile.fileName, subimgfile.file);
+        if (error) {
+          console.log(error);
+          return;
+        }
+      });
+    }
 
     await supabase.from("Products").insert({
       name,
       description,
       category,
-      main_img_url: url,
+      main_img_url: supabaseImageUrl + mainImagePath,
+      sub1_img_url:
+        subImagefiles.length >= 1
+          ? supabaseImageUrl + subImagefiles[0].fileName
+          : "",
+      sub2_img_url:
+        subImagefiles.length >= 2
+          ? supabaseImageUrl + subImagefiles[1].fileName
+          : "",
+      sub3_img_url:
+        subImagefiles.length >= 3
+          ? supabaseImageUrl + subImagefiles[2].fileName
+          : "",
     });
 
     navigate("/admin");
@@ -71,13 +90,11 @@ const Create = () => {
       alert("You can upload only 3 sub image files ");
       return;
     }
-    console.log(subImagefiles);
-    console.log(subImagePaths);
 
     const subimage = file[0];
-    const subImgPath = `${v4()}-${subimage.name}`;
-    setSubImageFiles([...subImagefiles, subimage]);
-    setSubImagePaths([...subImagePaths, subImgPath]);
+    const subImgName = `${v4()}-${subimage.name}`;
+    const imgobject = { file: subimage, fileName: subImgName };
+    setSubImageFiles([...subImagefiles, imgobject]);
     setSubImages([...subImages, URL.createObjectURL(subimage)]);
   };
 
