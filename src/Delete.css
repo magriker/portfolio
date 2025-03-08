@@ -1,13 +1,34 @@
 .card {
-  border: 1px solid #263680;
+  border-top: 3px solid #263680;
+  border-bottom: 3px solid #263680;
   width: 250px;
+  padding: 10px;
 }
 
-.description-box p {
+.card p {
   margin: 0;
 }
 
-.description-box div {
+.card .id,
+.name,
+.category,
+.description {
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 10px;
+}
+
+/* .description-box p {
+  margin: 0;
+} */
+
+.description div {
   padding: 8px;
   overflow-wrap: break-word;
+}
+
+.mainImg {
+  padding: 20px;
+}
+.mainImg img {
+  width: 100%;
 }

@@ -8,7 +8,11 @@ import "../../Delete.css";
 const Delete = () => {
   const location = useLocation();
   const product = location.state.p;
-  const url = product.main_img_url;
+  const mainImgUrl = product.main_img_url;
+  const subImg1Url1 = product.sub1_img_url;
+  const subImg1Url2 = product.sub2_img_url;
+  const subImg1Url3 = product.sub3_img_url;
+
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseImageUrl =
     "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
@@ -21,7 +25,17 @@ const Delete = () => {
     await supabase.from("Products").delete().eq("id", product.id);
     await supabase.storage
       .from("Product_img")
-      .remove(url.replace(supabaseImageUrl, ""));
+      .remove(mainImgUrl.replace(supabaseImageUrl, ""));
+
+    await supabase.storage
+      .from("Product_img")
+      .remove(subImg1Url1.replace(supabaseImageUrl, ""));
+    await supabase.storage
+      .from("Product_img")
+      .remove(subImg1Url2.replace(supabaseImageUrl, ""));
+    await supabase.storage
+      .from("Product_img")
+      .remove(subImg1Url3.replace(supabaseImageUrl, ""));
 
     // await supabase.storage.from("Product_img").remove();
     navigate("/admin");
@@ -50,11 +64,19 @@ const Delete = () => {
             </Label>
           </div>
         </div>
-        <div className="description-box">
+        <div className="description">
           <p>
             <Label size="s">Description:</Label>
           </p>
           <div>{product.description}</div>
+        </div>
+        <div className="mainImg-box">
+          <p>
+            <Label size="s">Main Image:</Label>
+          </p>
+          <div className="mainImg">
+            <img src={product.main_img_url} alt="" />
+          </div>
         </div>
       </div>
 
