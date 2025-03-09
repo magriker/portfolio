@@ -1,3 +1,7 @@
+.edit-container {
+  width: 250px;
+}
+
 form label {
   display: block;
   margin-top: 10px;

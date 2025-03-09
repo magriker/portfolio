@@ -11,6 +11,7 @@ const Edit = () => {
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [category, setCategory] = useState(product.category);
+  const [mainImg, setMainImg] = useState(product.main_img_url);
 
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
@@ -33,45 +34,56 @@ const Edit = () => {
 
   return (
     <div>
-      <a onClick={() => handleBack()}>
-        <span className="arrow">&larr;</span>
-        <Label size="s" hover>
-          back
-        </Label>
-      </a>
-      <form onSubmit={handnleEdit}>
-        <div className="product-name">
-          <label>名前</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="description">
-          <label>説明</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="category">
-          <label>カテゴリー</label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(+e.target.value)}
-          >
-            {CATEGORIES.map((c) => (
-              <option value={c.key} key={c.key}>
-                {c.value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="submit" className="submit-button">
-          登録
-        </button>
-      </form>
+      <div className="edit-container">
+        <a onClick={() => handleBack()}>
+          <span className="arrow">&larr;</span>
+          <Label size="s" hover>
+            back
+          </Label>
+        </a>
+        <form onSubmit={handnleEdit}>
+          <div className="product-name">
+            <Label size="s">Name:</Label>
+            <div>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="description">
+            <Label size="s">Description:</Label>
+            <div>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="category">
+            <Label size="s">Category:</Label>
+            <div>
+              <select
+                value={category}
+                onChange={(e) => setCategory(+e.target.value)}
+              >
+                {CATEGORIES.map((c) => (
+                  <option value={c.key} key={c.key}>
+                    {c.value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="main-img">
+            <img src={mainImg} alt="" />
+          </div>
+          <button type="submit" className="submit-button">
+            Edit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -9,10 +9,10 @@
   margin: 0;
 }
 
-.card .id,
-.name,
-.category,
-.description {
+.card .id-box,
+.name-box,
+.category-box,
+.description-box {
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 10px;
 }
@@ -21,7 +21,7 @@
   margin: 0;
 } */
 
-.description div {
+.description-box div {
   padding: 8px;
   overflow-wrap: break-word;
 }
