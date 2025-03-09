@@ -45,26 +45,26 @@ const Delete = () => {
     <div>
       <div className="card">
         <div className="card-top">
-          <div className="id">
+          <div className="id-box">
             <Label size="s">ID:</Label>
             <Label size="s" bold>
               {product.id}
             </Label>
           </div>
-          <div className="name">
+          <div className="name-box">
             <Label size="s">Name:</Label>
             <Label size="s" bold>
               {product.name}
             </Label>
           </div>
-          <div className="category">
+          <div className="category-box">
             <Label size="s">Category:</Label>
             <Label size="s" bold>
               {CATEGORIES.find((c) => c.key === +product.category)?.value}
             </Label>
           </div>
         </div>
-        <div className="description">
+        <div className="description-box">
           <p>
             <Label size="s">Description:</Label>
           </p>
