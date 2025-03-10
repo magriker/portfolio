@@ -77,6 +77,7 @@ const Edit = () => {
             </div>
           </div>
           <div className="main-img">
+            <Label size="s">Main Image</Label>
             <img src={mainImg} alt="" />
           </div>
           <button type="submit" className="submit-button">
