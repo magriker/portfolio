@@ -12,6 +12,9 @@ const Edit = () => {
   const [description, setDescription] = useState(product.description);
   const [category, setCategory] = useState(product.category);
   const [mainImg, setMainImg] = useState(product.main_img_url);
+  const [subImg1, setSubImg1] = useState(product.sub1_img_url);
+  const [subImg2, setSubImg2] = useState(product.sub2_img_url);
+  const [subImg3, setSubImg3] = useState(product.sub3_img_url);
 
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
@@ -32,6 +35,8 @@ const Edit = () => {
     navigate("/admin");
   };
 
+  const handleUpload = () => {};
+
   return (
     <div>
       <div className="edit-container">
@@ -43,7 +48,9 @@ const Edit = () => {
         </a>
         <form onSubmit={handnleEdit}>
           <div className="product-name">
-            <Label size="s">Name:</Label>
+            <Label size="s" bold>
+              Name:
+            </Label>
             <div>
               <input
                 type="text"
@@ -53,7 +60,9 @@ const Edit = () => {
             </div>
           </div>
           <div className="description">
-            <Label size="s">Description:</Label>
+            <Label size="s" bold>
+              Description:
+            </Label>
             <div>
               <textarea
                 value={description}
@@ -62,7 +71,9 @@ const Edit = () => {
             </div>
           </div>
           <div className="category">
-            <Label size="s">Category:</Label>
+            <Label size="s" bold>
+              Category:
+            </Label>
             <div>
               <select
                 value={category}
@@ -77,8 +88,31 @@ const Edit = () => {
             </div>
           </div>
           <div className="main-img">
-            <Label size="s">Main Image</Label>
+            <Label size="s" bold>
+              Main Image:
+            </Label>
+            <input type="file" onChange={handleUpload} />
             <img src={mainImg} alt="" />
+          </div>
+          <div className="sub-imgs">
+            <Label size="s" bold>
+              Sub Images:
+            </Label>
+            <div>
+              <Label size="s">Sub image 1:</Label>
+              <input type="file" onChange={handleUpload} />
+              <img src={subImg1} alt="" className="subImg1" />
+            </div>
+            <div>
+              <Label size="s">Sub image 2:</Label>
+              <input type="file" onChange={handleUpload} />
+              <img src={subImg2} alt="" className="subImg2" />
+            </div>
+            <div>
+              <Label size="s">Sub image 3:</Label>
+              <input type="file" onChange={handleUpload} />
+              <img src={subImg3} alt="" className="subImg3" />
+            </div>
           </div>
           <button type="submit" className="submit-button">
             Edit
