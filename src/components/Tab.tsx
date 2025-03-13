@@ -12,7 +12,8 @@ export type TabProps = {
 
 const Tab: React.FC<TabProps> = ({ tabs, setCategory }) => {
   const handleClick = (tab: keyValue) => {
-    setCategory(tab.value);
+    setCategory(tab.key);
+    console.log(tab.key);
   };
 
   return (

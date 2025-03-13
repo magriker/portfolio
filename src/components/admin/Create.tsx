@@ -22,7 +22,7 @@ const Create = () => {
   const [category, setCategory] = useState(CATEGORIES[0].key);
   const [mainImage, setMainImage] = useState(null);
   const [mainImageFile, setMainImageFile] = useState(null);
-  const [mainImagePath, setMainImagePath] = useState("");
+  const [mainImageName, setMainImageName] = useState("");
   const [subImages, setSubImages] = useState([]);
   const [subImagefiles, setSubImageFiles] = useState([]);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Create = () => {
     if (mainImageFile) {
       const { error } = await supabase.storage
         .from("Product_img")
-        .upload(mainImagePath, mainImageFile);
+        .upload(mainImageName, mainImageFile);
       if (error) {
         console.log(error);
         return;
@@ -56,7 +56,7 @@ const Create = () => {
       name,
       description,
       category,
-      main_img_url: supabaseImageUrl + mainImagePath,
+      main_img_url: supabaseImageUrl + mainImageName,
       sub1_img_url:
         subImagefiles.length >= 1
           ? supabaseImageUrl + subImagefiles[0].fileName
@@ -77,8 +77,8 @@ const Create = () => {
   const handleUpload = (event) => {
     const file = event.target.files[0];
     setMainImageFile(file);
-    const path = `${v4()}-${file.name}`;
-    setMainImagePath(path);
+    const fileName = `${v4()}-${file.name}`;
+    setMainImageName(fileName);
 
     if (file) {
       setMainImage(URL.createObjectURL(file));
