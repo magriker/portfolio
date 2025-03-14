@@ -10,11 +10,21 @@
 .main-img {
   width: 181px;
   border-radius: 4px;
+  transition: all 0.3s;
 }
 
 .product-link {
   width: fit-content;
   height: fit-content;
+  padding: 5px;
+}
+
+.product-link:hover {
+  cursor: pointer;
+}
+
+.main-img:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (min-width: 768px) {
