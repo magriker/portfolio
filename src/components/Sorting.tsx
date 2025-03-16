@@ -16,12 +16,12 @@ const Sorting = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [products, setProducts] = useState([] as any[]);
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState(1);
 
   const filteredProducts =
-    category === "all"
+    category === 1
       ? products
-      : products.filter((product) => product.category === category);
+      : products.filter((product) => Number(product.category) === category);
 
   async function fetchProducts() {
     const { data, error } = await supabase
