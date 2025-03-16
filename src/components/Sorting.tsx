@@ -2,10 +2,12 @@ import Tab from "./Tab";
 import "../tab.css";
 import "../Sorting.css";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { CATEGORIES, CATEGORIES_LABEL } from "../constants";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 const Sorting = () => {
   const navigate = useNavigate();
@@ -41,6 +43,8 @@ const Sorting = () => {
 
   console.log(filteredProducts);
 
+  // const { t } = useTranslation();
+
   return (
     <>
       <Tab setCategory={setCategory} tabs={CATEGORIES_LABEL}></Tab>
@@ -59,6 +63,11 @@ const Sorting = () => {
             ></img>
           </a>
         ))}
+      </div>
+      <div>
+        <Trans i18nKey="welcomeMessage">
+          Welcome, <b>user</b>!<i>Test</i>
+        </Trans>
       </div>
     </>
   );

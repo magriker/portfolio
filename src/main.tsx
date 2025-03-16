@@ -8,6 +8,7 @@ import Admin from "./components/admin/Admin.tsx";
 import Create from "./components/admin/create.tsx";
 import Edit from "./components/admin/Edit.tsx";
 import Delete from "./components/admin/Delete.tsx";
+import "./utils/i18n";
 
 const router = createBrowserRouter([
   {
