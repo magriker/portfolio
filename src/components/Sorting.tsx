@@ -43,7 +43,10 @@ const Sorting = () => {
 
   console.log(filteredProducts);
 
-  // const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <>
@@ -65,9 +68,12 @@ const Sorting = () => {
         ))}
       </div>
       <div>
-        <Trans i18nKey="welcomeMessage">
-          Welcome, <b>user</b>!<i>Test</i>
-        </Trans>
+        {/* <Trans i18nKey="welcomeMessage">
+          ようこそ <b>!</b>!
+        </Trans> */}
+        {t("welcomeMessage")}
+        <button onClick={() => changeLanguage("en")}>English</button>
+        <button onClick={() => changeLanguage("jp")}>日本語</button>
       </div>
     </>
   );
