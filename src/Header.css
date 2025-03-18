@@ -14,12 +14,34 @@
 }
 
 .language-box {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   height: 73px;
   width: 32px;
   position: absolute;
   top: 0;
   left: 345px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.language-box button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  align-items: center;
+  border: 1px solid #263068;
+  background-color: white;
+}
+
+.language-box button :hover {
+  color: white;
+  background-color: #263068;
+  cursor: pointer;
+}
+
+.english-btn {
 }
 
 @media screen and (min-width: 768px) {
@@ -41,7 +63,7 @@
   .language-box {
     border: 1px solid blue;
     height: 115px;
-    width: 49px;
+    width: 50px;
     position: absolute;
     top: 0;
     left: 1106px;

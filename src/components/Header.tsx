@@ -29,7 +29,18 @@ const Header = () => {
             ]}
           ></Tab>
         </nav>
-        <div className="language-box"></div>
+        <div className="language-box">
+          <button className="english-btn">
+            <Label size="s" bold>
+              EN
+            </Label>
+          </button>
+          <button className="japanese-btn">
+            <Label size="s" bold>
+              JP
+            </Label>
+          </button>
+        </div>
       </div>
     </div>
   );
