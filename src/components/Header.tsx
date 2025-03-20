@@ -2,6 +2,7 @@ import "../App.css";
 import Label from "./Label";
 import Tab from "./Tab";
 import "../Header.css";
+import { changeLanguage } from "i18next";
 
 const Header = () => {
   return (
@@ -30,15 +31,11 @@ const Header = () => {
           ></Tab>
         </nav>
         <div className="language-box">
-          <button className="english-btn">
-            <Label size="s" bold>
-              EN
-            </Label>
+          <button className="english-btn" onClick={() => changeLanguage("en")}>
+            EN
           </button>
-          <button className="japanese-btn">
-            <Label size="s" bold>
-              JP
-            </Label>
+          <button className="japanese-btn" onClick={() => changeLanguage("jp")}>
+            JP
           </button>
         </div>
       </div>

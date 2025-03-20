@@ -10,7 +10,7 @@
   height: 18px;
   top: 144px;
   /* left: 779px; */
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .language-box {
@@ -25,23 +25,24 @@
   justify-content: space-between;
 }
 
-.language-box button {
+.english-btn,
+.japanese-btn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   font-size: 14px;
+  font-weight: bold;
   align-items: center;
   border: 1px solid #263068;
   background-color: white;
+  transition: all 0.3s;
 }
 
-.language-box button :hover {
+.english-btn:hover,
+.japanese-btn:hover {
   color: white;
   background-color: #263068;
   cursor: pointer;
-}
-
-.english-btn {
 }
 
 @media screen and (min-width: 768px) {

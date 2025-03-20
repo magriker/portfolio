@@ -9,9 +9,9 @@ function App() {
     <>
       <div className="container">
         <Header></Header>
-        {/* <Footer></Footer> */}
-        {/* <About></About> */}
-        {/* <Sorting></Sorting> */}
+        <Sorting></Sorting>
+        <About></About>
+        <Footer></Footer>
       </div>
     </>
   );

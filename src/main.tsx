@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App.tsx";
 import Details from "./components/Details.tsx";
 import Admin from "./components/admin/Admin.tsx";
-import Create from "./components/admin/create.tsx";
+import Create from "./components/admin/Create.tsx";
 import Edit from "./components/admin/Edit.tsx";
 import Delete from "./components/admin/Delete.tsx";
 import "./utils/i18n";
