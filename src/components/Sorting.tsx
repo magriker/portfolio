@@ -2,10 +2,10 @@ import Tab from "./Tab";
 import "../tab.css";
 import "../Sorting.css";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useTransition } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { CATEGORIES, CATEGORIES_LABEL } from "../constants";
+import { CATEGORIES_LABEL } from "../constants";
 import { useTranslation } from "react-i18next";
 
 const Sorting = () => {
@@ -67,12 +67,9 @@ const Sorting = () => {
         ))}
       </div>
       <div>
-        {/* <Trans i18nKey="welcomeMessage">
-          ようこそ <b>!</b>!
-        </Trans> */}
-        {/* {t("welcomeMessage")} */}
-        {/* <button onClick={() => changeLanguage("en")}>English</button>
-        <button onClick={() => changeLanguage("jp")}>日本語</button> */}
+        {t("welcomeMessage")}
+        <button onClick={() => changeLanguage("en")}>English</button>
+        <button onClick={() => changeLanguage("jp")}>日本語</button>
       </div>
     </>
   );
