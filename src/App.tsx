@@ -8,10 +8,10 @@ function App() {
   return (
     <>
       <div className="container">
-        {/* <Header></Header> */}
-        {/* <Footer></Footer> */}
-        {/* <About></About> */}
+        <Header></Header>
         <Sorting></Sorting>
+        <About></About>
+        <Footer></Footer>
       </div>
     </>
   );

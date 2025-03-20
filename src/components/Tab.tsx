@@ -8,6 +8,7 @@ export type keyValue = {
 
 export type TabProps = {
   tabs: keyValue[];
+  setCategory: (tab: number) => void;
 };
 
 const Tab: React.FC<TabProps> = ({ tabs, setCategory }) => {
