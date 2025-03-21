@@ -3,14 +3,17 @@ import Label from "./Label";
 import Tab from "./Tab";
 import "../Header.css";
 import { changeLanguage } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="header-container">
       <div className="intro-box">
         <div className="slogan">
           <Label size="l" bold>
-            Hi, I am Sophie Bolinski
+            {t("headerIntroduction")}
             <br />
           </Label>
           <Label size="l">
