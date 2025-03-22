@@ -7,12 +7,16 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      headerIntroduction: "Hi, I am Sophie Bolinski",
+      headerName: "Hi, I am Sophie Bolinski",
+      headerIntroduction:
+        "an industrial designer <3/> focusing on innovation and<3/> prototyping. Based in Tokyo.",
     },
   },
   jp: {
     translation: {
-      headerIntroduction: "こんにちは、私はソフィー・ボリンスキです",
+      headerName: "こんにちは、私はソフィー・ボリンスキです。",
+      headerIntroduction:
+        "東京を拠点に活動する<1/>試作とイノベーションに根ざした<1/>インダストリアルデザイナーです。",
     },
   },
 };

@@ -3,25 +3,29 @@ import Label from "./Label";
 import Tab from "./Tab";
 import "../Header.css";
 import { changeLanguage } from "i18next";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const [lngButton, setlngButton] = useState("");
 
   return (
     <div className="header-container">
       <div className="intro-box">
         <div className="slogan">
           <Label size="l" bold>
-            {t("headerIntroduction")}
+            {t("headerName")}
             <br />
           </Label>
           <Label size="l">
-            an industrial designer
-            <br />
-            focusing on innovation and
-            <br />
-            prototyping. Based in Tokyo.
+            <Trans i18nKey="headerIntroduction">
+              an industrial designer
+              <br />
+              focusing on innovation and
+              <br />
+              prototyping. Based in Tokyo.
+            </Trans>
           </Label>
         </div>
         <nav className="navigation">
@@ -34,10 +38,22 @@ const Header = () => {
           ></Tab>
         </nav>
         <div className="language-box">
-          <button className="english-btn" onClick={() => changeLanguage("en")}>
+          <button
+            className={`english-btn ${lngButton === "en" ? "active" : ""}`}
+            onClick={() => {
+              changeLanguage("en");
+              setlngButton("en");
+            }}
+          >
             EN
           </button>
-          <button className="japanese-btn" onClick={() => changeLanguage("jp")}>
+          <button
+            className={`japanese-btn ${lngButton === "jp" ? "active" : ""}`}
+            onClick={() => {
+              changeLanguage("jp");
+              setlngButton("jp");
+            }}
+          >
             JP
           </button>
         </div>
