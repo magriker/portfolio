@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import { CATEGORIES_LABEL } from "../constants";
 import { useTranslation } from "react-i18next";
+import { changeLanguage } from "i18next";
 
 const Sorting = () => {
   const navigate = useNavigate();
@@ -42,11 +43,6 @@ const Sorting = () => {
 
   console.log(filteredProducts);
 
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
-
   return (
     <>
       <Tab setCategory={setCategory} tabs={CATEGORIES_LABEL}></Tab>
@@ -65,11 +61,6 @@ const Sorting = () => {
             ></img>
           </a>
         ))}
-      </div>
-      <div>
-        {t("welcomeMessage")}
-        <button onClick={() => changeLanguage("en")}>English</button>
-        <button onClick={() => changeLanguage("jp")}>日本語</button>
       </div>
     </>
   );
