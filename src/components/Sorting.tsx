@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { CATEGORIES_LABEL } from "../constants";
-import { useTranslation } from "react-i18next";
-import { changeLanguage } from "i18next";
 
 const Sorting = () => {
   const navigate = useNavigate();
