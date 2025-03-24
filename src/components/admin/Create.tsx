@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";
@@ -27,7 +27,7 @@ const Create = () => {
   const [subImagefiles, setSubImageFiles] = useState([]);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: Event) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (mainImageFile) {
       const { error } = await supabase.storage

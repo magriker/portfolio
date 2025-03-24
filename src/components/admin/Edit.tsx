@@ -47,7 +47,7 @@ const Edit = () => {
       .remove(originImgUrl.replace(supabaseImageUrl, ""));
   };
 
-  const handnleEdit = async (e: Event) => {
+  const handnleEdit = async (e) => {
     e.preventDefault();
 
     await Promise.all([

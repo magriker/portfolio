@@ -1,7 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
-import { useEffect, useState } from "react";
 import { CATEGORIES } from "../../constants";
 import "../../Delete.css";
 
