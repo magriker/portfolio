@@ -1,4 +1,5 @@
-.detail-box {
+.detail-container {
+  margin: auto;
   width: 384px;
   height: auto;
 }

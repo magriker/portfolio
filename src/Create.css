@@ -8,11 +8,17 @@
   align-items: center;
 }
 
+.arrow {
+  width: 60%;
+  margin: auto;
+  align-self: flex-start;
+}
+
 .create-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 85%;
 }
 
 .description-form textarea {
