@@ -7,13 +7,11 @@ const Footer = () => {
     <footer>
       <div className="contact-box">
         <Label size="l" bold>
-          Let's Talk
-          <br />
+          <p>Let's Talk</p>
         </Label>
         <Label size="l">
-          charlotte@traumfabrikat.de
-          <br />
-          +818075853392
+          <p>charlotte@traumfabrikat.de</p>
+          <p>+818075853392</p>
         </Label>
       </div>
       <div className="snsAndportfolio-box">
