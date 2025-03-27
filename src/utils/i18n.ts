@@ -14,7 +14,7 @@ const resources = {
   },
   jp: {
     translation: {
-      headerName: "こんにちは、私はソフィー・ボリンスキです。",
+      headerName: "私はソフィー・ボリンスキです。",
       headerIntroduction:
         "東京を拠点に活動する<1/>試作とイノベーションに根ざした<1/>インダストリアルデザイナーです。",
     },
