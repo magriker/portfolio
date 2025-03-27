@@ -5,11 +5,7 @@ const About = () => {
   return (
     <>
       <div className="chatchphrase-box">
-        <img
-          src="public\Portrait.png"
-          alt="Portrait"
-          className="portrait"
-        ></img>
+        <img src="/Portrait.png" alt="Portrait" className="portrait"></img>
         <div className="chatchprase">
           <Label size="l">
             “I want my work to be meaningful and helpful for people in every day
@@ -42,7 +38,7 @@ const About = () => {
             <br />
           </Label>
           <img
-            src="public\LinkedIn_Icon.png"
+            src="/LinkedIn_Icon.png"
             alt="linkedin icon"
             className="linkedin-icon"
           ></img>
@@ -55,7 +51,7 @@ const About = () => {
           </p>
 
           <div className="Bachelor-box">
-            <img src="public\circle.png" alt="circle" className="circle" />
+            <img src="/circle.png" alt="circle" className="circle" />
             <div className="Bachelor-title">
               <Label size="s" bold>
                 Bachelor in Industrial design
@@ -77,7 +73,7 @@ const About = () => {
             </div>
           </div>
           <div className="Bachelor-box">
-            <img src="public\circle.png" alt="circle" className="circle" />
+            <img src="/circle.png" alt="circle" className="circle" />
             <div className="Bachelor-title">
               <Label size="s" bold>
                 Bachelor International Media and IT

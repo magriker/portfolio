@@ -8,6 +8,8 @@ import { useState } from "react";
 import { CATEGORIES_LABEL } from "../constants";
 
 const Sorting = () => {
+  console.log(import.meta.env.VITE_SUPABASE_URL);
+
   const navigate = useNavigate();
   const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
   const supabaseKey =
@@ -33,6 +35,7 @@ const Sorting = () => {
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toDetaliPage = (product: object, productId: number) => {
