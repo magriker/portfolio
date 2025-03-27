@@ -37,6 +37,7 @@ footer {
 .contact-box {
   width: 384px;
   height: 88px;
+  margin-bottom: 18px;
 }
 
 .contact-box p {
@@ -68,7 +69,6 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid blue;
   }
 
   .socialMeia-icons {
@@ -76,7 +76,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     height: 65px;
-    border: 1px solid blue;
   }
 
   .portfolio-box {

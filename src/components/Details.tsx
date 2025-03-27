@@ -12,15 +12,15 @@ const Details = () => {
   };
   return (
     <>
-      <div className="backbutton">
-        <a onClick={() => handleBack()}>
-          <span className="arrow">&larr;</span>
-          <Label size="s" hover>
-            back
-          </Label>
-        </a>
-      </div>
-      <div className="detail-box">
+      <div className="detail-container">
+        <div className="backbutton">
+          <a onClick={() => handleBack()}>
+            <span className="arrow">&larr;</span>
+            <Label size="s" hover>
+              back
+            </Label>
+          </a>
+        </div>
         <div className="product-name">
           <Label size="l" bold>
             {product.name}

@@ -72,16 +72,6 @@ const Admin = () => {
                 Delete
               </Label>
             </th>
-            {/* <th>created_at</th> */}
-
-            {/* <th>main_img</th>
-            <th>sub1_img</th>
-            <th>sub2_img</th>
-            <th>sub3_img</th>
-            <th>category</th>
-            <th>order</th>
-            <th>description</th>
-            <th>updated_at</th> */}
           </tr>
         </thead>
         <tbody>

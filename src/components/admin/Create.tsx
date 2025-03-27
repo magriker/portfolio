@@ -74,6 +74,10 @@ const Create = () => {
     navigate("/admin");
   };
 
+  const handleBack = () => {
+    navigate("/admin");
+  };
+
   const handleUpload = (event) => {
     const file = event.target.files[0];
     setMainImageFile(file);
@@ -107,6 +111,13 @@ const Create = () => {
           </Label>
         </label>
       </p>
+      <a onClick={() => handleBack()} className="arrow">
+        <span>&larr;</span>
+        <Label size="s" hover>
+          back
+        </Label>
+      </a>
+
       <form onSubmit={handleSubmit} className="create-form">
         <div className="name-form">
           <label>

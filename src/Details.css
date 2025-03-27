@@ -1,12 +1,12 @@
-.detail-box {
+.detail-container {
+  margin: auto;
   width: 384px;
   height: auto;
 }
 
-.detailed-explanation {
-  width: 384px;
+/* .detailed-explanation {
   height: auto;
-}
+} */
 
 .backbutton {
   transition: all 0.2s;
@@ -19,8 +19,9 @@
 
 .arrow {
   width: 17px;
-  display: inline-block;
+  display: inline;
   font-size: 13px;
+  padding-right: 3px;
   color: #263680;
   transition: all 0.2s;
 }
@@ -36,7 +37,7 @@
 }
 
 .subimg-box {
-  width: 384px;
+  width: 100%;
   height: auto;
   margin-bottom: 36px;
 }
@@ -75,6 +76,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .detail-container {
+    margin: auto;
+    width: 1130px;
+    height: auto;
+    padding: 50px;
+  }
+
   .arrow {
     width: 25px;
     font-size: 20px;
@@ -86,7 +94,7 @@
   }
 
   .subimg-box {
-    width: 1174px;
+    width: 100%;
     height: auto;
     margin-bottom: 32px;
   }
@@ -106,6 +114,7 @@
   .subimg-3 {
     max-width: 571px;
     border-radius: 4px;
+    width: 100%;
   }
 
   .detailed-description-box {
