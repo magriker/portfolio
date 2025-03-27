@@ -5,12 +5,24 @@ import Header from "./components/Header";
 import Sorting from "./components/Sorting";
 
 function App() {
+  const handleScroll = (sectionname: string) => {
+    const element = document.getElementById(sectionname + "-section");
+    element.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
-      <div className="container">
-        <Header></Header>
-        <Sorting></Sorting>
-        <About></About>
+      <div className="app-container">
+        <Header handleScroll={handleScroll}></Header>
+        <div id="work-section">
+          <Sorting></Sorting>
+        </div>
+        <div id="about-section">
+          <About></About>
+        </div>
+
         <Footer></Footer>
       </div>
     </>
