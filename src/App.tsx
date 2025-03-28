@@ -22,8 +22,9 @@ function App() {
         <div id="about-section">
           <About></About>
         </div>
-
-        <Footer></Footer>
+        <div id="contact-section">
+          <Footer></Footer>
+        </div>
       </div>
     </>
   );

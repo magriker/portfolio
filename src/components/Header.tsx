@@ -33,7 +33,7 @@ const Header = ({ handleScroll }) => {
             tabs={[
               { key: 1, value: "work" },
               { key: 2, value: "about" },
-              { key: 3, value: "content" },
+              { key: 3, value: "contact" },
             ]}
             handleScroll={handleScroll}
           ></Tab>
