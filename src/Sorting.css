@@ -10,7 +10,7 @@
 .main-img {
   width: 181px;
   border-radius: 4px;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 .product-link {
@@ -24,7 +24,7 @@
 }
 
 .main-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 @media screen and (min-width: 768px) {
