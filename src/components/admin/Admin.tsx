@@ -99,15 +99,6 @@ const Admin = () => {
                   delete
                 </button>
               </th>
-              {/* <th>{p.created_at}</th> */}
-              {/* <th>{p.main_img_url}</th>
-              <th>{p.sub1_img_url}</th>
-              <th>{p.sub2_img_url}</th>
-              <th>{p.sub3_img_url}</th>
-              <th>{p.category}</th>
-              <th>{p.order}</th>
-              <th>{p.description}</th>
-              <th>{p.updated_at}</th> */}
             </tr>
           ))}
         </tbody>

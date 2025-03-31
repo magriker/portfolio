@@ -141,7 +141,7 @@ const Edit = () => {
               </select>
             </div>
           </div>
-          <div className="main-img">
+          <div className="mainimg">
             <Label size="s" bold>
               Main Image:
             </Label>

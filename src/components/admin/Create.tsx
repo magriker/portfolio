@@ -179,7 +179,9 @@ const Create = () => {
             ))}
           </div>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="register-button">
+          Register
+        </button>
       </form>
     </div>
   );
