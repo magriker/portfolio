@@ -42,7 +42,7 @@ const Admin = () => {
 
   return (
     <div>
-      <button onClick={toCreatePage} className="button">
+      <button onClick={toCreatePage} className="admin-button">
         Register
       </button>
       <table className="content-table">
@@ -90,12 +90,15 @@ const Admin = () => {
                 </Label>
               </th>
               <th>
-                <button onClick={() => toEditPage(p)} className="button">
+                <button onClick={() => toEditPage(p)} className="admin-button">
                   edit
                 </button>
               </th>
               <th>
-                <button onClick={() => toDeletePage(p)} className="button">
+                <button
+                  onClick={() => toDeletePage(p)}
+                  className="admin-button"
+                >
                   delete
                 </button>
               </th>

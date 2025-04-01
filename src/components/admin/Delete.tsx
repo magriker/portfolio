@@ -80,7 +80,9 @@ const Delete = () => {
       </div>
 
       <p>Would you like to delete the date above?</p>
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleDelete} className="admin-button">
+        Delete
+      </button>
     </div>
   );
 };

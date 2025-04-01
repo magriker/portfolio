@@ -111,12 +111,14 @@ const Create = () => {
           </Label>
         </label>
       </p>
-      <a onClick={() => handleBack()} className="arrow">
-        <span>&larr;</span>
-        <Label size="s" hover>
-          back
-        </Label>
-      </a>
+      <div className="back-button">
+        <a onClick={() => handleBack()}>
+          <span className="arrow">&larr;</span>
+          <Label size="s" hover>
+            back
+          </Label>
+        </a>
+      </div>
 
       <form onSubmit={handleSubmit} className="create-form">
         <div className="name-form">
@@ -179,7 +181,7 @@ const Create = () => {
             ))}
           </div>
         </div>
-        <button type="submit" className="register-button">
+        <button type="submit" className="admin-button">
           Register
         </button>
       </form>

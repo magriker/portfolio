@@ -8,10 +8,30 @@
   align-items: center;
 }
 
-.arrow {
+.back-button {
+  transition: all 0.2s;
+  display: inline-block;
+  align-self: flex-start;
   width: 60%;
   margin: auto;
-  align-self: flex-start;
+}
+
+.back-button:hover {
+  cursor: pointer;
+}
+
+.arrow {
+  width: 17px;
+  display: inline;
+  font-size: 13px;
+  padding-right: 3px;
+  color: #263680;
+  transition: all 0.2s;
+}
+
+.backbutton:hover .arrow {
+  transform: translateX(-1px);
+  font-weight: 700;
 }
 
 .create-form {
@@ -80,6 +100,7 @@ form textarea {
 
 .subImg-drop-box {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .uploader {
@@ -107,25 +128,4 @@ form textarea {
 
 .dropped-img {
   width: 150px;
-}
-
-.register-button {
-  font-size: 14px;
-  font-weight: bold;
-  width: auto;
-  padding: 10px 15px;
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 5px;
-  color: #263680;
-  border: 1px solid #263680;
-  background-color: white;
-  transition: all 0.3s;
-  margin-top: 15px;
-}
-
-.register-button:hover {
-  cursor: pointer;
-  color: white;
-  background-color: #263680;
 }
