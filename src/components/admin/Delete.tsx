@@ -12,29 +12,27 @@ const Delete = () => {
   const subImg1Url2 = product.sub2_img_url;
   const subImg1Url3 = product.sub3_img_url;
 
-  const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-  const supabaseImageUrl =
-    "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_KEY
+  );
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
     await supabase.storage
       .from("Product_img")
-      .remove(mainImgUrl.replace(supabaseImageUrl, ""));
+      .remove(mainImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
 
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url1.replace(supabaseImageUrl, ""));
+      .remove(subImg1Url1.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url2.replace(supabaseImageUrl, ""));
+      .remove(subImg1Url2.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url3.replace(supabaseImageUrl, ""));
+      .remove(subImg1Url3.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
 
     // await supabase.storage.from("Product_img").remove();
     navigate("/admin");

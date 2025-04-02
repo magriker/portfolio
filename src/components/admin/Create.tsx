@@ -9,12 +9,11 @@ import "../../Create.css";
 import "tailwindcss";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
-const supabaseImageUrl =
-  "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
-const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
-const supabase = createClient(supabaseUrl, supabaseKey);
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_KEY
+);
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -56,18 +55,18 @@ const Create = () => {
       name,
       description,
       category,
-      main_img_url: supabaseImageUrl + mainImageName,
+      main_img_url: import.meta.env.VITE_SUPABASE_IMG_URL + mainImageName,
       sub1_img_url:
         subImagefiles.length >= 1
-          ? supabaseImageUrl + subImagefiles[0].fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImagefiles[0].fileName
           : "",
       sub2_img_url:
         subImagefiles.length >= 2
-          ? supabaseImageUrl + subImagefiles[1].fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImagefiles[1].fileName
           : "",
       sub3_img_url:
         subImagefiles.length >= 3
-          ? supabaseImageUrl + subImagefiles[2].fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImagefiles[2].fileName
           : "",
     });
 

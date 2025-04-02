@@ -25,12 +25,10 @@ const Edit = () => {
   const [subImg3Viewable, setSubImg3Viewable] = useState(product.sub3_img_url);
   const [subImg3, setSubImg3] = useState(null);
 
-  const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  const supabaseImageUrl =
-    "https://cvlwnazscqnftpfwhsac.supabase.co/storage/v1/object/public/Product_img/";
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_KEY
+  );
   const navigate = useNavigate();
 
   const handleStorageUpload = async (imgFile, originImgUrl) => {
@@ -44,7 +42,7 @@ const Edit = () => {
 
     await supabase.storage
       .from("Product_img")
-      .remove(originImgUrl.replace(supabaseImageUrl, ""));
+      .remove(originImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
   };
 
   const handnleEdit = async (e) => {
@@ -63,16 +61,16 @@ const Edit = () => {
         description,
         category,
         main_img_url: mainImg
-          ? supabaseImageUrl + mainImg.fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + mainImg.fileName
           : product.main_img_url,
         sub1_img_url: subImg1
-          ? supabaseImageUrl + subImg1.fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImg1.fileName
           : product.sub1_img_url,
         sub2_img_url: subImg2
-          ? supabaseImageUrl + subImg2.fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImg2.fileName
           : product.sub2_img_url,
         sub3_img_url: subImg3
-          ? supabaseImageUrl + subImg3.fileName
+          ? import.meta.env.VITE_SUPABASE_IMG_URL + subImg3.fileName
           : product.sub3_img_url,
       })
       .eq("id", product.id);
@@ -186,7 +184,7 @@ const Edit = () => {
               <img src={subImg3Viewable} alt="" className="subImg3" />
             </div>
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="admin-button">
             Edit
           </button>
         </form>

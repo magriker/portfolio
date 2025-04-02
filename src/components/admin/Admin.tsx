@@ -10,10 +10,10 @@ const Admin = () => {
   const [products, setProducts] = useState([] as any[]);
   const navigate = useNavigate();
 
-  const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_KEY
+  );
 
   async function fetchProducts() {
     const { data, error } = await supabase
