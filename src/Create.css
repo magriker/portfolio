@@ -8,10 +8,30 @@
   align-items: center;
 }
 
-.arrow {
+.back-button {
+  transition: all 0.2s;
+  display: inline-block;
+  align-self: flex-start;
   width: 60%;
   margin: auto;
-  align-self: flex-start;
+}
+
+.back-button:hover {
+  cursor: pointer;
+}
+
+.arrow {
+  width: 17px;
+  display: inline;
+  font-size: 13px;
+  padding-right: 3px;
+  color: #263680;
+  transition: all 0.2s;
+}
+
+.backbutton:hover .arrow {
+  transform: translateX(-1px);
+  font-weight: 700;
 }
 
 .create-form {
@@ -80,6 +100,7 @@ form textarea {
 
 .subImg-drop-box {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .uploader {

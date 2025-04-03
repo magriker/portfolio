@@ -10,10 +10,10 @@ const Admin = () => {
   const [products, setProducts] = useState([] as any[]);
   const navigate = useNavigate();
 
-  const supabaseUrl = "https://cvlwnazscqnftpfwhsac.supabase.co";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bHduYXpzY3FuZnRwZndoc2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg4NDY3MTgsImV4cCI6MjA1NDQyMjcxOH0.VmjcDRP04_5RklbY8DfCcWIzRMPFGlklQlRlJTdALoY";
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_KEY
+  );
 
   async function fetchProducts() {
     const { data, error } = await supabase
@@ -42,7 +42,7 @@ const Admin = () => {
 
   return (
     <div>
-      <button onClick={toCreatePage} className="button">
+      <button onClick={toCreatePage} className="admin-button">
         Register
       </button>
       <table className="content-table">
@@ -90,24 +90,18 @@ const Admin = () => {
                 </Label>
               </th>
               <th>
-                <button onClick={() => toEditPage(p)} className="button">
+                <button onClick={() => toEditPage(p)} className="admin-button">
                   edit
                 </button>
               </th>
               <th>
-                <button onClick={() => toDeletePage(p)} className="button">
+                <button
+                  onClick={() => toDeletePage(p)}
+                  className="admin-button"
+                >
                   delete
                 </button>
               </th>
-              {/* <th>{p.created_at}</th> */}
-              {/* <th>{p.main_img_url}</th>
-              <th>{p.sub1_img_url}</th>
-              <th>{p.sub2_img_url}</th>
-              <th>{p.sub3_img_url}</th>
-              <th>{p.category}</th>
-              <th>{p.order}</th>
-              <th>{p.description}</th>
-              <th>{p.updated_at}</th> */}
             </tr>
           ))}
         </tbody>

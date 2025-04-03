@@ -27,7 +27,7 @@
   border-bottom: 2px solid #263680;
 }
 
-.button {
+.admin-button {
   font-size: 14px;
   font-weight: bold;
   width: auto;
@@ -41,7 +41,7 @@
   transition: all 0.3s;
 }
 
-.button:hover {
+.admin-button:hover {
   cursor: pointer;
   color: white;
   background-color: #263680;
