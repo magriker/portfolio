@@ -4,10 +4,10 @@ import { useNavigate } from "react-router";
 import Label from "../Label";
 import "../../Admin.css";
 import { CATEGORIES } from "../../constants";
+import { Product } from "./type";
 
 const Admin = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [products, setProducts] = useState([] as any[]);
+  const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
   const supabase = createClient(
@@ -20,7 +20,7 @@ const Admin = () => {
       .from("Products")
       .select("*")
       .order("created_at", { ascending: true });
-    if (!error) setProducts(data);
+    if (!error && data) setProducts(data as Product[]);
   }
 
   useEffect(() => {
@@ -32,11 +32,11 @@ const Admin = () => {
     navigate("/admin/create");
   };
 
-  const toEditPage = (p: object) => {
+  const toEditPage = (p: Product) => {
     navigate("/admin/edit", { state: { p } });
   };
 
-  const toDeletePage = (p: object) => {
+  const toDeletePage = (p: Product) => {
     navigate("/admin/delete", { state: { p } });
   };
 

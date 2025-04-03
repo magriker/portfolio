@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";
@@ -15,18 +15,23 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 );
 
+type ImageFileType = {
+  fileName: string;
+  file: File;
+};
+
 const Create = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
-  const [mainImage, setMainImage] = useState(null);
-  const [mainImageFile, setMainImageFile] = useState(null);
+  const [mainImage, setMainImage] = useState("");
+  const [mainImageFile, setMainImageFile] = useState<File>();
   const [mainImageName, setMainImageName] = useState("");
-  const [subImages, setSubImages] = useState([]);
-  const [subImagefiles, setSubImageFiles] = useState([]);
+  const [subImages, setSubImages] = useState<string[]>([]);
+  const [subImagefiles, setSubImageFiles] = useState<ImageFileType[]>([]);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mainImageFile) {
       const { error } = await supabase.storage
@@ -77,8 +82,10 @@ const Create = () => {
     navigate("/admin");
   };
 
-  const handleUpload = (event) => {
-    const file = event.target.files[0];
+  const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const target = event.target;
+    if (!target?.files?.length) return;
+    const file = target.files[0];
     setMainImageFile(file);
     const fileName = `${v4()}-${file.name}`;
     setMainImageName(fileName);
@@ -88,7 +95,7 @@ const Create = () => {
     }
   };
 
-  const handleChange = (file) => {
+  const handleChange = (file: FileList) => {
     if (subImages.length > 2) {
       alert("You can upload only 3 sub image files ");
       return;
