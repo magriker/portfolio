@@ -15,7 +15,7 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 );
 
-type ImageFileType = {
+export type ImageFileType = {
   fileName: string;
   file: File;
 };
