@@ -1,29 +1,31 @@
 import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { CATEGORIES } from "../../constants";
 import "../../Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
+import { Product } from "./type";
+import { ImageFileType } from "./Create";
 
 const Edit = () => {
   const location = useLocation();
-  const product = location.state.p;
+  const product: Product = location.state.p;
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [category, setCategory] = useState(product.category);
 
   const [mainImgViewable, setMainImgViewable] = useState(product.main_img_url);
-  const [mainImg, setMainImg] = useState(null);
+  const [mainImg, setMainImg] = useState<ImageFileType | null>(null);
 
   const [subImg1Viewable, setSubImg1Viewable] = useState(product.sub1_img_url);
-  const [subImg1, setSubImg1] = useState(null);
+  const [subImg1, setSubImg1] = useState<ImageFileType | null>(null);
 
   const [subImg2Viewable, setSubImg2Viewable] = useState(product.sub2_img_url);
-  const [subImg2, setSubImg2] = useState(null);
+  const [subImg2, setSubImg2] = useState<ImageFileType | null>(null);
 
   const [subImg3Viewable, setSubImg3Viewable] = useState(product.sub3_img_url);
-  const [subImg3, setSubImg3] = useState(null);
+  const [subImg3, setSubImg3] = useState<ImageFileType | null>(null);
 
   const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL,
@@ -31,7 +33,10 @@ const Edit = () => {
   );
   const navigate = useNavigate();
 
-  const handleStorageUpload = async (imgFile, originImgUrl) => {
+  const handleStorageUpload = async (
+    imgFile: ImageFileType | null,
+    originImgUrl: string
+  ) => {
     if (!imgFile) return;
 
     await supabase.storage
@@ -42,10 +47,12 @@ const Edit = () => {
 
     await supabase.storage
       .from("Product_img")
-      .remove(originImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
+      .remove([
+        originImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""),
+      ]);
   };
 
-  const handnleEdit = async (e) => {
+  const handnleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await Promise.all([
@@ -82,8 +89,14 @@ const Edit = () => {
     navigate("/admin");
   };
 
-  const handleUpload = (e, setImgViewable, setImg) => {
-    const imgFile = e.target.files[0];
+  const handleUpload = (
+    e: ChangeEvent<HTMLInputElement>,
+    setImgViewable: React.Dispatch<React.SetStateAction<string>>,
+    setImg: React.Dispatch<React.SetStateAction<ImageFileType | null>>
+  ) => {
+    const target = e.target;
+    if (!target?.files?.length) return;
+    const imgFile = target.files[0];
     const imgFileName = `${v4()}-${imgFile.name}`;
     setImgViewable(URL.createObjectURL(imgFile));
     setImg({ file: imgFile, fileName: imgFileName });
@@ -129,7 +142,7 @@ const Edit = () => {
             <div>
               <select
                 value={category}
-                onChange={(e) => setCategory(+e.target.value)}
+                onChange={(e) => setCategory(String(e.target.value))}
               >
                 {CATEGORIES.map((c) => (
                   <option value={c.key} key={c.key}>
