@@ -9,17 +9,17 @@ export type keyValue = {
 export type TabProps = {
   tabs: keyValue[];
   setCategory?: (tab: number) => void;
-  handleScroll?: (sectionname: string) => void;
+  onScroll?: (sectionname: string) => void;
 };
 
-const Tab: React.FC<TabProps> = ({ tabs, setCategory, handleScroll }) => {
+const Tab: React.FC<TabProps> = ({ tabs, setCategory, onScroll }) => {
   const handleClick = (tab: keyValue) => {
     if (typeof setCategory === "function") {
       setCategory(tab.key);
     }
 
-    if (typeof handleScroll === "function") {
-      handleScroll(tab.value);
+    if (typeof onScroll === "function") {
+      onScroll(tab.value);
     }
   };
 

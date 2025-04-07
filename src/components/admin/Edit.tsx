@@ -59,7 +59,7 @@ const Edit = () => {
       handleStorageUpload(mainImg, product.main_img_url),
       handleStorageUpload(subImg1, product.sub1_img_url),
       handleStorageUpload(subImg2, product.sub2_img_url),
-      handleStorageUpload(subImg3, product.sub2_img_url),
+      handleStorageUpload(subImg3, product.sub3_img_url),
     ]);
     await supabase
       .from("Products")

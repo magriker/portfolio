@@ -5,9 +5,9 @@ import Header from "./components/Header";
 import Sorting from "./components/Sorting";
 
 function App() {
-  const handleScroll = (sectionname: string) => {
-    const element = document.getElementById(sectionname + "-section");
-    element.scrollIntoView({
+  const handleScroll = (sectionName: string): void => {
+    const element = document.getElementById(sectionName + "-section");
+    element?.scrollIntoView({
       behavior: "smooth",
     });
   };
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="app-container">
-        <Header handleScroll={handleScroll}></Header>
+        <Header onScroll={handleScroll}></Header>
         <div id="work-section">
           <Sorting></Sorting>
         </div>

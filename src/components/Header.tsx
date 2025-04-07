@@ -6,7 +6,11 @@ import { changeLanguage } from "i18next";
 import { Trans, useTranslation } from "react-i18next";
 import { useState } from "react";
 
-const Header = ({ handleScroll }) => {
+type HeaderComponentScroll = {
+  onScroll: (sectionName: string) => void;
+};
+
+const Header = ({ onScroll }: HeaderComponentScroll) => {
   const { t } = useTranslation();
   const [lngButton, setlngButton] = useState("");
 
@@ -35,7 +39,7 @@ const Header = ({ handleScroll }) => {
               { key: 2, value: "about" },
               { key: 3, value: "contact" },
             ]}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           ></Tab>
         </nav>
         <div className="language-box">
