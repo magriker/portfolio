@@ -1,6 +1,25 @@
+html {
+  border-top: 5px solid #263068;
+  border-bottom: 5px solid #263068;
+}
+
 .app-container {
   width: 1155px;
   height: auto;
   margin: auto;
   line-height: 1.15;
+}
+
+.header-section,
+.work-section,
+.about-section {
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-section,
+  .work-section,
+  .about-section {
+    margin-bottom: 35px;
+  }
 }

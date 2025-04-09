@@ -5,8 +5,7 @@ import { CATEGORIES } from "../../constants";
 import "../../Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
-import { Product } from "./type";
-import { ImageFileType } from "./Create";
+import { ImageFileType, Product } from "./type";
 
 const Edit = () => {
   const location = useLocation();
@@ -16,16 +15,16 @@ const Edit = () => {
   const [category, setCategory] = useState(product.category);
 
   const [mainImgViewable, setMainImgViewable] = useState(product.main_img_url);
-  const [mainImg, setMainImg] = useState<ImageFileType | null>(null);
+  const [mainImg, setMainImg] = useState<ImageFileType>();
 
   const [subImg1Viewable, setSubImg1Viewable] = useState(product.sub1_img_url);
-  const [subImg1, setSubImg1] = useState<ImageFileType | null>(null);
+  const [subImg1, setSubImg1] = useState<ImageFileType>();
 
   const [subImg2Viewable, setSubImg2Viewable] = useState(product.sub2_img_url);
-  const [subImg2, setSubImg2] = useState<ImageFileType | null>(null);
+  const [subImg2, setSubImg2] = useState<ImageFileType>();
 
   const [subImg3Viewable, setSubImg3Viewable] = useState(product.sub3_img_url);
-  const [subImg3, setSubImg3] = useState<ImageFileType | null>(null);
+  const [subImg3, setSubImg3] = useState<ImageFileType>();
 
   const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL,
@@ -34,7 +33,7 @@ const Edit = () => {
   const navigate = useNavigate();
 
   const handleStorageUpload = async (
-    imgFile: ImageFileType | null,
+    imgFile: ImageFileType | undefined,
     originImgUrl: string
   ) => {
     if (!imgFile) return;
@@ -91,8 +90,8 @@ const Edit = () => {
 
   const handleUpload = (
     e: ChangeEvent<HTMLInputElement>,
-    setImgViewable: React.Dispatch<React.SetStateAction<string>>,
-    setImg: React.Dispatch<React.SetStateAction<ImageFileType | null>>
+    setImgViewable: (value: string) => void,
+    setImg: (value: ImageFileType | undefined) => void
   ) => {
     const target = e.target;
     if (!target?.files?.length) return;
@@ -142,7 +141,7 @@ const Edit = () => {
             <div>
               <select
                 value={category}
-                onChange={(e) => setCategory(String(e.target.value))}
+                onChange={(e) => setCategory(e.target.value)}
               >
                 {CATEGORIES.map((c) => (
                   <option value={c.key} key={c.key}>
