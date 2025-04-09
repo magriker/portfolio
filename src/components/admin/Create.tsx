@@ -7,6 +7,7 @@ import { v4 } from "uuid";
 import Label from "../Label";
 import "../../Create.css";
 import "tailwindcss";
+import { ImageFileType } from "./type";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -14,11 +15,6 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_KEY
 );
-
-export type ImageFileType = {
-  fileName: string;
-  file: File;
-};
 
 const Create = () => {
   const [name, setName] = useState("");

@@ -15,7 +15,9 @@ function App() {
   return (
     <>
       <div className="app-container">
-        <Header onScroll={handleScroll}></Header>
+        <div className="header-section">
+          <Header onScroll={handleScroll}></Header>
+        </div>
         <div id="work-section">
           <Sorting></Sorting>
         </div>

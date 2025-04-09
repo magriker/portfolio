@@ -11,3 +11,8 @@ export type Product = {
   description: string;
   updated_at: string;
 };
+
+export type ImageFileType = {
+  fileName: string;
+  file: File;
+};
