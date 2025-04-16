@@ -8,6 +8,7 @@ import Label from "../Label";
 import "../../Create.css";
 import "tailwindcss";
 import { ImageFileType } from "./type";
+import useFetchSession from "../../hooks/useFetchSession";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -26,7 +27,7 @@ const Create = () => {
   const [subImages, setSubImages] = useState<string[]>([]);
   const [subImagefiles, setSubImageFiles] = useState<ImageFileType[]>([]);
   const navigate = useNavigate();
-
+  useFetchSession();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mainImageFile) {

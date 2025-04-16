@@ -6,6 +6,7 @@ import "../../Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
 import { ImageFileType, Product } from "./type";
+import useFetchSession from "../../hooks/useFetchSession";
 
 const Edit = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const Edit = () => {
     import.meta.env.VITE_SUPABASE_KEY
   );
   const navigate = useNavigate();
-
+  useFetchSession();
   const handleStorageUpload = async (
     imgFile: ImageFileType | undefined,
     originImgUrl: string
