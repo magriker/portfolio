@@ -9,6 +9,7 @@ import Create from "./components/admin/Create.tsx";
 import Edit from "./components/admin/Edit.tsx";
 import Delete from "./components/admin/Delete.tsx";
 import "./utils/i18n";
+import Login from "./components/admin/Login.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/delete",
     element: <Delete></Delete>,
+  },
+  {
+    path: "/admin/Login",
+    element: <Login></Login>,
   },
 ]);
 
