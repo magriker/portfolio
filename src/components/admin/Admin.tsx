@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { replace, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import Label from "../Label";
 import "../../Admin.css";
 import { CATEGORIES } from "../../constants";
