@@ -5,10 +5,12 @@ import Label from "../Label";
 import "../../Admin.css";
 import { CATEGORIES } from "../../constants";
 import { Product } from "./type";
+import useFetchSession from "../../hooks/useFetchSession";
 
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
+  useFetchSession();
 
   const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL,
@@ -23,8 +25,20 @@ const Admin = () => {
     if (!error && data) setProducts(data as Product[]);
   }
 
+  // const fetchSession = async () => {
+  //   const { data } = await supabase.auth.getSession();
+  //   if (!data?.session) navigate("/admin/login", { replace: true });
+  //   console.log("login", data);
+  // };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/admin/login", { replace: true });
+  };
+
   useEffect(() => {
     fetchProducts();
+    // fetchSession();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,6 +58,9 @@ const Admin = () => {
     <div>
       <button onClick={toCreatePage} className="admin-button">
         Register
+      </button>
+      <button onClick={handleSignOut} className="admin-button">
+        Logout
       </button>
       <table className="content-table">
         <thead>

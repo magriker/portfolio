@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
 import { CATEGORIES } from "../../constants";
 import "../../Delete.css";
+import useFetchSession from "../../hooks/useFetchSession";
 
 const Delete = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const Delete = () => {
     import.meta.env.VITE_SUPABASE_KEY
   );
   const navigate = useNavigate();
-
+  useFetchSession();
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
     await supabase.storage
