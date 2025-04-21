@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
 }
 
 .back-button {
@@ -38,11 +39,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
+  justify-content: center;
+  width: 100%;
+}
+
+.name-form,
+.description-form {
+  margin: auto;
+}
+
+.name-form input {
+  box-sizing: border-box;
+  width: 220px;
 }
 
 .description-form textarea {
+  box-sizing: border-box;
   resize: none;
+  width: 220px;
 }
 
 .category-form {
@@ -50,7 +64,8 @@
 }
 
 .category-form select {
-  width: 200px;
+  box-sizing: border-box;
+  width: 220px;
   padding: 5px 10px;
 }
 
@@ -71,7 +86,7 @@ form textarea {
 }
 
 .mainImg-drop-box {
-  width: 200px;
+  width: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,4 +143,10 @@ form textarea {
 
 .dropped-img {
   width: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .create {
+    width: 500px;
+  }
 }
