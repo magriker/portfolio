@@ -56,7 +56,7 @@ const Admin = () => {
 
   return (
     <div>
-      <button onClick={toCreatePage} className="admin-button">
+      <button onClick={toCreatePage} className="admin-button margin-right">
         Register
       </button>
       <button onClick={handleSignOut} className="admin-button">
