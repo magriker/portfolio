@@ -1,14 +1,23 @@
 .edit-container {
-  width: 250px;
+  width: 384px;
+  margin: auto;
+}
+.edit-container form {
+  width: 220px;
+  margin: auto;
 }
 
-form label {
+.edit-container form label {
   display: block;
   margin-top: 10px;
 }
 
-form input {
+.edit-container form input,
+.edit-container form textarea {
+  box-sizing: border-box;
   padding: 5px 10px;
+  resize: none;
+  width: 220px;
 }
 
 .mainimg {
