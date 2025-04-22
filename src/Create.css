@@ -48,9 +48,15 @@
   margin: auto;
 }
 
-.name-form input {
-  box-sizing: border-box;
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input {
+  padding: 5px 10px;
   width: 220px;
+  box-sizing: border-box;
 }
 
 .description-form textarea {
@@ -59,24 +65,10 @@
   width: 220px;
 }
 
-.category-form {
-  width: auto;
-}
-
 .category-form select {
   box-sizing: border-box;
   width: 220px;
   padding: 5px 10px;
-}
-
-form label {
-  display: block;
-  margin-top: 10px;
-}
-
-form input {
-  padding: 5px 10px;
-  width: 200px;
 }
 
 form textarea {
@@ -123,7 +115,7 @@ form textarea {
   border: 1px dotted #263068;
   margin-top: 10px;
   text-align: center;
-  width: 200px;
+  width: 220px;
 }
 
 .uploader label {
@@ -148,5 +140,22 @@ form textarea {
 @media screen and (min-width: 768px) {
   .create {
     width: 500px;
+  }
+  form input,
+  .description-form textarea,
+  .category-form select,
+  .mainImg-drop-box,
+  .uploader {
+    width: 300px;
+  }
+
+  .name-form,
+  .description-form,
+  .category-form {
+    margin-top: 20px;
+  }
+  .mainImg-drop-box,
+  .subImg-drop-box {
+    margin-top: 30px;
   }
 }
