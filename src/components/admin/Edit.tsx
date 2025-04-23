@@ -105,12 +105,21 @@ const Edit = () => {
   return (
     <div>
       <div className="edit-container">
-        <a onClick={() => handleBack()}>
-          <span className="arrow">&larr;</span>
-          <Label size="s" hover>
-            back
-          </Label>
-        </a>
+        <p className="edit-title">
+          <label>
+            <Label size="l" bold>
+              Edit
+            </Label>
+          </label>
+        </p>
+        <div className="back-button">
+          <a onClick={() => handleBack()}>
+            <span className="arrow">&larr;</span>
+            <Label size="s" hover>
+              back
+            </Label>
+          </a>
+        </div>
         <form onSubmit={handnleEdit}>
           <div className="product-name">
             <Label size="s" bold>
@@ -197,7 +206,7 @@ const Edit = () => {
               <img src={subImg3Viewable} alt="" className="subImg3" />
             </div>
           </div>
-          <button type="submit" className="admin-button">
+          <button type="submit" className="admin-button margin">
             Edit
           </button>
         </form>
