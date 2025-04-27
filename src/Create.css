@@ -17,7 +17,7 @@
   margin: auto;
 }
 
-.back-button:hover {
+.back-button a:hover {
   cursor: pointer;
 }
 

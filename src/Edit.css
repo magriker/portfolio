@@ -10,9 +10,10 @@
   align-self: flex-start;
   width: 220px;
   margin: auto;
+  display: inline-block;
 }
 
-.back-button:hover {
+.back-button a:hover {
   cursor: pointer;
 }
 
@@ -25,13 +26,12 @@
   transition: all 0.2s;
 }
 
-.back-button:hover .arrow {
+.back-button a:hover .arrow {
   transform: translateX(-1px);
   font-weight: 700;
 }
 
 .edit-container {
-  width: 384px;
   margin: auto;
 }
 .edit-container form {
@@ -45,7 +45,8 @@
 }
 
 .edit-container form input,
-.edit-container form textarea {
+.edit-container form textarea,
+.category select {
   box-sizing: border-box;
   padding: 5px 10px;
   resize: none;
@@ -55,14 +56,9 @@
 .product-name,
 .description,
 .category,
-.mainimg {
+.mainimg,
+.sub-imgs div {
   margin-bottom: 20px;
-}
-
-.category select {
-  box-sizing: border-box;
-  width: 220px;
-  padding: 5px 10px;
 }
 
 .mainimg input[type="file"],
@@ -88,12 +84,14 @@
 }
 
 .mainimg img {
-  width: 200px;
+  box-sizing: border-box;
+  width: 220px;
   padding: 10px;
 }
 
 .sub-imgs img {
-  width: 200px;
+  box-sizing: border-box;
+  width: 220px;
   padding: 10px;
 }
 
@@ -103,7 +101,29 @@
 }
 
 @media screen and (min-width: 768px) {
-  .edit-container {
-    width: 500px;
+  .edit-container form {
+    width: 300px;
+    margin: auto;
+  }
+
+  .edit-container form input,
+  .edit-container form textarea,
+  .category select,
+  .back-button {
+    width: 300px;
+  }
+
+  .mainimg img {
+    width: 300px;
+  }
+  .sub-imgs img {
+    width: 300px;
+  }
+  .product-name,
+  .description,
+  .category,
+  .mainimg,
+  .sub-imgs div {
+    margin-bottom: 30px;
   }
 }

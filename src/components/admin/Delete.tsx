@@ -39,49 +39,63 @@ const Delete = () => {
     navigate("/admin");
   };
 
+  const handleBack = () => {};
+
   return (
     <div>
-      <div className="card">
-        <div className="card-top">
-          <div className="id-box">
-            <Label size="s">ID:</Label>
-            <Label size="s" bold>
-              {product.id}
+      <div className="delete">
+        <div className="back-button">
+          <a onClick={() => handleBack()}>
+            <span className="arrow">&larr;</span>
+            <Label size="s" hover>
+              back
             </Label>
+          </a>
+        </div>
+        <div className="card">
+          <div className="card-top">
+            <div className="id-box">
+              <Label size="s">ID:</Label>
+              <Label size="s" bold>
+                {product.id}
+              </Label>
+            </div>
+            <div className="name-box">
+              <Label size="s">Name:</Label>
+              <Label size="s" bold>
+                {product.name}
+              </Label>
+            </div>
+            <div className="category-box">
+              <Label size="s">Category:</Label>
+              <Label size="s" bold>
+                {CATEGORIES.find((c) => c.key === +product.category)?.value}
+              </Label>
+            </div>
           </div>
-          <div className="name-box">
-            <Label size="s">Name:</Label>
-            <Label size="s" bold>
-              {product.name}
-            </Label>
+          <div className="description-box">
+            <p>
+              <Label size="s">Description:</Label>
+            </p>
+            <div>{product.description}</div>
           </div>
-          <div className="category-box">
-            <Label size="s">Category:</Label>
-            <Label size="s" bold>
-              {CATEGORIES.find((c) => c.key === +product.category)?.value}
-            </Label>
+          <div className="mainImg-box">
+            <p>
+              <Label size="s">Main Image:</Label>
+            </p>
+            <div className="mainImg">
+              <img src={product.main_img_url} alt="" />
+            </div>
           </div>
         </div>
-        <div className="description-box">
-          <p>
-            <Label size="s">Description:</Label>
-          </p>
-          <div>{product.description}</div>
-        </div>
-        <div className="mainImg-box">
-          <p>
-            <Label size="s">Main Image:</Label>
-          </p>
-          <div className="mainImg">
-            <img src={product.main_img_url} alt="" />
-          </div>
-        </div>
-      </div>
 
-      <p>Would you like to delete the date above?</p>
-      <button onClick={handleDelete} className="admin-button">
-        Delete
-      </button>
+        <p className="confirmation-text">
+          Are you sure to delete the data above?
+        </p>
+        <button onClick={handleDelete} className="admin-button margin">
+          Delete
+        </button>
+      </div>
     </div>
   );
 };

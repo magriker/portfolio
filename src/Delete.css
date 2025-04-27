@@ -1,8 +1,41 @@
+.delete {
+  margin: auto;
+  width: 400px;
+}
+
+.delete .back-button {
+  transition: all 0.2s;
+  display: inline-block;
+  align-self: flex-start;
+  width: 300px;
+  margin: auto;
+}
+
+.delete .back-button:hover {
+  cursor: pointer;
+}
+
+.delete .arrow {
+  width: 17px;
+  display: inline;
+  font-size: 13px;
+  padding-right: 3px;
+  color: #263680;
+  transition: all 0.2s;
+}
+
+.delete .backbutton:hover .arrow {
+  transform: translateX(-1px);
+  font-weight: 700;
+}
+
 .card {
+  box-sizing: border-box;
   border-top: 3px solid #263680;
   border-bottom: 3px solid #263680;
-  width: 250px;
+  width: 300px;
   padding: 10px;
+  margin: auto;
 }
 
 .card p {
@@ -17,18 +50,23 @@
   margin-bottom: 10px;
 }
 
-/* .description-box p {
-  margin: 0;
-} */
+.confirmation-text {
+  width: 290px;
+  margin: 10px auto;
+}
 
 .description-box div {
   padding: 8px;
   overflow-wrap: break-word;
 }
 
-.mainImg {
+.card .mainImg {
   padding: 20px;
 }
-.mainImg img {
+.card .mainImg img {
   width: 100%;
+}
+
+.margin {
+  margin: auto;
 }
