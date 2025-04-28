@@ -1,6 +1,14 @@
 .delete {
   margin: auto;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-title {
+  margin: 10px auto;
+  display: inline-block;
+  align-self: center;
 }
 
 .delete .back-button {
@@ -8,10 +16,10 @@
   display: inline-block;
   align-self: flex-start;
   width: 300px;
-  margin: auto;
+  margin: 10px auto;
 }
 
-.delete .back-button:hover {
+.delete .back-button a:hover {
   cursor: pointer;
 }
 
@@ -42,7 +50,7 @@
   margin: 0;
 }
 
-.card .id-box,
+.id-box,
 .name-box,
 .category-box,
 .description-box {
@@ -69,4 +77,24 @@
 
 .margin {
   margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .delete {
+    width: 500px;
+  }
+  .delete .back-button,
+  .card {
+    width: 400px;
+  }
+  .confirmation-text {
+    width: 380px;
+    font-size: 21px;
+  }
+  .id-box,
+  .name-box,
+  .category-box,
+  .description-box {
+    margin-bottom: 20px;
+  }
 }

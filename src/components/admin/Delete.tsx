@@ -39,11 +39,20 @@ const Delete = () => {
     navigate("/admin");
   };
 
-  const handleBack = () => {};
+  const handleBack = () => {
+    navigate("/admin");
+  };
 
   return (
     <div>
       <div className="delete">
+        <p className="delete-title">
+          <label>
+            <Label size="l" bold>
+              Delete
+            </Label>
+          </label>
+        </p>
         <div className="back-button">
           <a onClick={() => handleBack()}>
             <span className="arrow">&larr;</span>
