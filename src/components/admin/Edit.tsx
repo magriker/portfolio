@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { ChangeEvent, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { CATEGORIES } from "../../constants";
 import "../../Edit.css";
 import Label from "../Label";
@@ -8,9 +8,13 @@ import { v4 } from "uuid";
 import { ImageFileType, Product } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
 
-const Edit = () => {
-  const location = useLocation();
-  const product: Product = location.state.p;
+type EditProps = {
+  product: Product;
+  toggleModal: () => void;
+};
+
+const Edit: React.FC<EditProps> = ({ product, toggleModal }) => {
+  // const location = useLocation();
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [category, setCategory] = useState(product.category);
@@ -82,11 +86,7 @@ const Edit = () => {
       })
       .eq("id", product.id);
 
-    navigate("/admin");
-  };
-
-  const handleBack = () => {
-    navigate("/admin");
+    toggleModal();
   };
 
   const handleUpload = (
@@ -112,14 +112,7 @@ const Edit = () => {
             </Label>
           </label>
         </p>
-        <div className="back-button">
-          <a onClick={() => handleBack()}>
-            <span className="arrow">&larr;</span>
-            <Label size="s" hover>
-              back
-            </Label>
-          </a>
-        </div>
+
         <form onSubmit={handnleEdit}>
           <div className="product-name">
             <Label size="s" bold>
