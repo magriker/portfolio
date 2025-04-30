@@ -1,15 +1,56 @@
+.delete {
+  margin: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-title {
+  margin: 10px auto;
+  display: inline-block;
+  align-self: center;
+}
+
+.delete .back-button {
+  transition: all 0.2s;
+  display: inline-block;
+  align-self: flex-start;
+  width: 300px;
+  margin: 10px auto;
+}
+
+.delete .back-button a:hover {
+  cursor: pointer;
+}
+
+.delete .arrow {
+  width: 17px;
+  display: inline;
+  font-size: 13px;
+  padding-right: 3px;
+  color: #263680;
+  transition: all 0.2s;
+}
+
+.delete .backbutton:hover .arrow {
+  transform: translateX(-1px);
+  font-weight: 700;
+}
+
 .card {
+  box-sizing: border-box;
   border-top: 3px solid #263680;
   border-bottom: 3px solid #263680;
-  width: 250px;
+  width: 300px;
   padding: 10px;
+  margin: auto;
 }
 
 .card p {
   margin: 0;
 }
 
-.card .id-box,
+.id-box,
 .name-box,
 .category-box,
 .description-box {
@@ -17,18 +58,43 @@
   margin-bottom: 10px;
 }
 
-/* .description-box p {
-  margin: 0;
-} */
+.confirmation-text {
+  width: 290px;
+  margin: 10px auto;
+}
 
 .description-box div {
   padding: 8px;
   overflow-wrap: break-word;
 }
 
-.mainImg {
+.card .mainImg {
   padding: 20px;
 }
-.mainImg img {
+.card .mainImg img {
   width: 100%;
+}
+
+.margin {
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .delete {
+    width: 500px;
+  }
+  .delete .back-button,
+  .card {
+    width: 400px;
+  }
+  .confirmation-text {
+    width: 380px;
+    font-size: 21px;
+  }
+  .id-box,
+  .name-box,
+  .category-box,
+  .description-box {
+    margin-bottom: 20px;
+  }
 }
