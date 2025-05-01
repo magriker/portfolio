@@ -1,13 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
-import { useLocation, useNavigate } from "react-router";
+// import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
 import { CATEGORIES } from "../../constants";
 import "../../Delete.css";
 import useFetchSession from "../../hooks/useFetchSession";
+import { ModalProps } from "./type";
 
-const Delete = () => {
-  const location = useLocation();
-  const product = location.state.p;
+const Delete: React.FC<ModalProps> = ({
+  product,
+  toggleModal,
+  refreshAdmin,
+}) => {
+  // const location = useLocation();
+  // const product = location.state.p;
   const mainImgUrl = product.main_img_url;
   const subImg1Url1 = product.sub1_img_url;
   const subImg1Url2 = product.sub2_img_url;
@@ -17,7 +22,7 @@ const Delete = () => {
     import.meta.env.VITE_SUPABASE_URL,
     import.meta.env.VITE_SUPABASE_KEY
   );
-  const navigate = useNavigate();
+
   useFetchSession();
   const handleDelete = async () => {
     await supabase.from("Products").delete().eq("id", product.id);
@@ -36,11 +41,8 @@ const Delete = () => {
       .remove(subImg1Url3.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
 
     // await supabase.storage.from("Product_img").remove();
-    navigate("/admin");
-  };
-
-  const handleBack = () => {
-    navigate("/admin");
+    toggleModal();
+    refreshAdmin();
   };
 
   return (
@@ -53,14 +55,6 @@ const Delete = () => {
             </Label>
           </label>
         </p>
-        <div className="back-button">
-          <a onClick={() => handleBack()}>
-            <span className="arrow">&larr;</span>
-            <Label size="s" hover>
-              back
-            </Label>
-          </a>
-        </div>
         <div className="card">
           <div className="card-top">
             <div className="id-box">

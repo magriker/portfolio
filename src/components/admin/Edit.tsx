@@ -1,19 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 import { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router";
+
 import { CATEGORIES } from "../../constants";
 import "../../Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
-import { ImageFileType, Product } from "./type";
+import { ImageFileType, ModalProps } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
 
-type EditProps = {
-  product: Product;
-  toggleModal: () => void;
-};
-
-const Edit: React.FC<EditProps> = ({ product, toggleModal }) => {
+const Edit: React.FC<ModalProps> = ({ product, toggleModal, refreshAdmin }) => {
   // const location = useLocation();
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
@@ -35,7 +30,7 @@ const Edit: React.FC<EditProps> = ({ product, toggleModal }) => {
     import.meta.env.VITE_SUPABASE_URL,
     import.meta.env.VITE_SUPABASE_KEY
   );
-  const navigate = useNavigate();
+
   useFetchSession();
   const handleStorageUpload = async (
     imgFile: ImageFileType | undefined,
@@ -87,6 +82,7 @@ const Edit: React.FC<EditProps> = ({ product, toggleModal }) => {
       .eq("id", product.id);
 
     toggleModal();
+    refreshAdmin();
   };
 
   const handleUpload = (
