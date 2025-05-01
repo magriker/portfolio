@@ -10,9 +10,16 @@ export type Product = {
   order?: number;
   description: string;
   updated_at: string;
+  modalType?: string;
 };
 
 export type ImageFileType = {
   fileName: string;
   file: File;
+};
+
+export type ModalProps = {
+  product: Product;
+  toggleModal: () => void;
+  refreshAdmin: () => void;
 };

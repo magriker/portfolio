@@ -7,6 +7,8 @@ import { CATEGORIES } from "../../constants";
 import { Product } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
 import Edit from "./Edit";
+import Delete from "./Delete";
+import Create from "./Create";
 
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,6 +22,10 @@ const Admin = () => {
     import.meta.env.VITE_SUPABASE_KEY
   );
 
+  const refreshAdmin = () => {
+    window.location.reload();
+  };
+
   async function fetchProducts() {
     const { data, error } = await supabase
       .from("Products")
@@ -31,12 +37,6 @@ const Admin = () => {
   const toggleModal = () => {
     setModal(!modal);
   };
-
-  // const fetchSession = async () => {
-  //   const { data } = await supabase.auth.getSession();
-  //   if (!data?.session) navigate("/admin/login", { replace: true });
-  //   console.log("login", data);
-  // };
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -50,17 +50,16 @@ const Admin = () => {
   }, []);
 
   const toCreatePage = () => {
-    navigate("/admin/create");
+    toggleModal();
+    selectedProdut("");
   };
 
-  const toEditModal = (p: Product) => {
+  const toModal = (p: Product, modalType: string) => {
+    const product = { ...p, modalType };
+
     // navigate("/admin/edit", { state: { p } });
     toggleModal();
-    setSelectedProduct(p);
-  };
-
-  const toDeletePage = (p: Product) => {
-    navigate("/admin/delete", { state: { p } });
+    setSelectedProduct(product);
   };
 
   return (
@@ -118,7 +117,7 @@ const Admin = () => {
                 </th>
                 <th>
                   <button
-                    onClick={() => toEditModal(p)}
+                    onClick={() => toModal(p, "edit")}
                     className="admin-button"
                   >
                     edit
@@ -126,7 +125,7 @@ const Admin = () => {
                 </th>
                 <th>
                   <button
-                    onClick={() => toDeletePage(p)}
+                    onClick={() => toModal(p, "delete")}
                     className="admin-button"
                   >
                     delete
@@ -140,7 +139,24 @@ const Admin = () => {
           <div className="modal">
             <div className="overlay" onClick={toggleModal}></div>
             <div className="modal-content">
-              <Edit product={selectedProdut} toggleModal={toggleModal}></Edit>
+              {selectedProdut?.modalType === "edit" ? (
+                <Edit
+                  product={selectedProdut}
+                  toggleModal={toggleModal}
+                  refreshAdmin={refreshAdmin}
+                ></Edit>
+              ) : selectedProdut?.modalType === "delete" ? (
+                <Delete
+                  product={selectedProdut}
+                  toggleModal={toggleModal}
+                  refreshAdmin={refreshAdmin}
+                ></Delete>
+              ) : selectedProdut === "" ? (
+                <Create></Create>
+              ) : (
+                ""
+              )}
+
               <button
                 className="admin-button close-modal"
                 onClick={toggleModal}
