@@ -135,6 +135,7 @@ form textarea {
 
 .dropped-img {
   width: 150px;
+  /* display: inline-block; */
 }
 
 @media screen and (min-width: 768px) {
@@ -157,5 +158,9 @@ form textarea {
   .mainImg-drop-box,
   .subImg-drop-box {
     margin-top: 30px;
+  }
+
+  .dropped-img {
+    width: 200px;
   }
 }

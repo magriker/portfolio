@@ -6,9 +6,12 @@ import "../../Admin.css";
 import { CATEGORIES } from "../../constants";
 import { Product } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
+import Edit from "./Edit";
 
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [modal, setModal] = useState(false);
+  const [selectedProdut, setSelectedProduct] = useState<Product>();
   const navigate = useNavigate();
   useFetchSession();
 
@@ -24,6 +27,10 @@ const Admin = () => {
       .order("created_at", { ascending: true });
     if (!error && data) setProducts(data as Product[]);
   }
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   // const fetchSession = async () => {
   //   const { data } = await supabase.auth.getSession();
@@ -46,8 +53,10 @@ const Admin = () => {
     navigate("/admin/create");
   };
 
-  const toEditPage = (p: Product) => {
-    navigate("/admin/edit", { state: { p } });
+  const toEditModal = (p: Product) => {
+    // navigate("/admin/edit", { state: { p } });
+    toggleModal();
+    setSelectedProduct(p);
   };
 
   const toDeletePage = (p: Product) => {
@@ -56,73 +65,92 @@ const Admin = () => {
 
   return (
     <div>
-      <button onClick={toCreatePage} className="admin-button margin-right">
-        Register
-      </button>
-      <button onClick={handleSignOut} className="admin-button">
-        Logout
-      </button>
-      <table className="content-table">
-        <thead>
-          <tr>
-            <th>
-              <Label size="m" bold white>
-                id
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                name
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                category
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                edit
-              </Label>
-            </th>
-            <th>
-              <Label size="m" bold white>
-                Delete
-              </Label>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((p) => (
-            <tr key={p.id}>
+      <div className="admin">
+        <button onClick={toCreatePage} className="admin-button margin-right">
+          Register
+        </button>
+        <button onClick={handleSignOut} className="admin-button">
+          Logout
+        </button>
+        <table className="content-table">
+          <thead>
+            <tr>
               <th>
-                <Label size="s">{p.id}</Label>
-              </th>
-              <th>
-                <Label size="s">{p.name}</Label>
-              </th>
-              <th>
-                <Label size="s">
-                  {CATEGORIES.find((c) => c.key === +p.category)?.value}
+                <Label size="m" bold white>
+                  id
                 </Label>
               </th>
               <th>
-                <button onClick={() => toEditPage(p)} className="admin-button">
-                  edit
-                </button>
+                <Label size="m" bold white>
+                  name
+                </Label>
               </th>
               <th>
-                <button
-                  onClick={() => toDeletePage(p)}
-                  className="admin-button"
-                >
-                  delete
-                </button>
+                <Label size="m" bold white>
+                  category
+                </Label>
+              </th>
+              <th>
+                <Label size="m" bold white>
+                  edit
+                </Label>
+              </th>
+              <th>
+                <Label size="m" bold white>
+                  Delete
+                </Label>
               </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr key={p.id}>
+                <th>
+                  <Label size="s">{p.id}</Label>
+                </th>
+                <th>
+                  <Label size="s">{p.name}</Label>
+                </th>
+                <th>
+                  <Label size="s">
+                    {CATEGORIES.find((c) => c.key === +p.category)?.value}
+                  </Label>
+                </th>
+                <th>
+                  <button
+                    onClick={() => toEditModal(p)}
+                    className="admin-button"
+                  >
+                    edit
+                  </button>
+                </th>
+                <th>
+                  <button
+                    onClick={() => toDeletePage(p)}
+                    className="admin-button"
+                  >
+                    delete
+                  </button>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {modal && (
+          <div className="modal">
+            <div className="overlay" onClick={toggleModal}></div>
+            <div className="modal-content">
+              <Edit product={selectedProdut} toggleModal={toggleModal}></Edit>
+              <button
+                className="admin-button close-modal"
+                onClick={toggleModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
