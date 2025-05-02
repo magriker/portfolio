@@ -9,11 +9,18 @@ import useFetchSession from "../../hooks/useFetchSession";
 import Edit from "./Edit";
 import Delete from "./Delete";
 import Create from "./Create";
+const LABEL_EDIT = "edit";
+const LABEL_DELETE = "delete";
+const LABEL_CREATE = "create";
+
+type ModalType = typeof LABEL_EDIT | typeof LABEL_DELETE | typeof LABEL_CREATE;
 
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [modal, setModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const [selectedProdut, setSelectedProduct] = useState<Product>();
+  const [modalType, setModalType] = useState<ModalType>("edit");
+
   const navigate = useNavigate();
   useFetchSession();
 
@@ -23,7 +30,7 @@ const Admin = () => {
   );
 
   const refreshAdmin = () => {
-    window.location.reload();
+    fetchProducts();
   };
 
   async function fetchProducts() {
@@ -35,7 +42,7 @@ const Admin = () => {
   }
 
   const toggleModal = () => {
-    setModal(!modal);
+    setIsModal(!isModal);
   };
 
   const handleSignOut = async () => {
@@ -49,23 +56,25 @@ const Admin = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toCreatePage = () => {
+  const toCreateModal = (modalType: ModalType) => {
     toggleModal();
-    selectedProdut("");
+    setModalType(modalType);
   };
 
-  const toModal = (p: Product, modalType: string) => {
-    const product = { ...p, modalType };
-
+  const toModal = (p: Product, modalType: ModalType) => {
     // navigate("/admin/edit", { state: { p } });
     toggleModal();
-    setSelectedProduct(product);
+    setModalType(modalType);
+    setSelectedProduct(p);
   };
 
   return (
     <div>
       <div className="admin">
-        <button onClick={toCreatePage} className="admin-button margin-right">
+        <button
+          onClick={() => toCreateModal(LABEL_CREATE)}
+          className="admin-button margin-right"
+        >
           Register
         </button>
         <button onClick={handleSignOut} className="admin-button">
@@ -117,44 +126,47 @@ const Admin = () => {
                 </th>
                 <th>
                   <button
-                    onClick={() => toModal(p, "edit")}
+                    onClick={() => toModal(p, LABEL_EDIT)}
                     className="admin-button"
                   >
-                    edit
+                    {LABEL_EDIT}
                   </button>
                 </th>
                 <th>
                   <button
-                    onClick={() => toModal(p, "delete")}
+                    onClick={() => toModal(p, LABEL_DELETE)}
                     className="admin-button"
                   >
-                    delete
+                    {LABEL_DELETE}
                   </button>
                 </th>
               </tr>
             ))}
           </tbody>
         </table>
-        {modal && (
+        {isModal && (
           <div className="modal">
             <div className="overlay" onClick={toggleModal}></div>
             <div className="modal-content">
-              {selectedProdut?.modalType === "edit" ? (
+              {modalType === LABEL_EDIT && (
                 <Edit
-                  product={selectedProdut}
+                  product={selectedProdut!}
                   toggleModal={toggleModal}
                   refreshAdmin={refreshAdmin}
                 ></Edit>
-              ) : selectedProdut?.modalType === "delete" ? (
+              )}
+              {modalType === LABEL_DELETE && (
                 <Delete
-                  product={selectedProdut}
+                  product={selectedProdut!}
                   toggleModal={toggleModal}
                   refreshAdmin={refreshAdmin}
                 ></Delete>
-              ) : selectedProdut === "" ? (
-                <Create></Create>
-              ) : (
-                ""
+              )}
+              {modalType === LABEL_CREATE && (
+                <Create
+                  toggleModal={toggleModal}
+                  refreshAdmin={refreshAdmin}
+                ></Create>
               )}
 
               <button

@@ -11,8 +11,6 @@ const Delete: React.FC<ModalProps> = ({
   toggleModal,
   refreshAdmin,
 }) => {
-  // const location = useLocation();
-  // const product = location.state.p;
   const mainImgUrl = product.main_img_url;
   const subImg1Url1 = product.sub1_img_url;
   const subImg1Url2 = product.sub2_img_url;
@@ -28,17 +26,17 @@ const Delete: React.FC<ModalProps> = ({
     await supabase.from("Products").delete().eq("id", product.id);
     await supabase.storage
       .from("Product_img")
-      .remove(mainImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
+      .remove([mainImgUrl.replace(import.meta.env.VITE_SUPABASE_IMG_URL, "")]);
 
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url1.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
+      .remove([subImg1Url1.replace(import.meta.env.VITE_SUPABASE_IMG_URL, "")]);
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url2.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
+      .remove([subImg1Url2.replace(import.meta.env.VITE_SUPABASE_IMG_URL, "")]);
     await supabase.storage
       .from("Product_img")
-      .remove(subImg1Url3.replace(import.meta.env.VITE_SUPABASE_IMG_URL, ""));
+      .remove([subImg1Url3.replace(import.meta.env.VITE_SUPABASE_IMG_URL, "")]);
 
     // await supabase.storage.from("Product_img").remove();
     toggleModal();

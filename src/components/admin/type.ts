@@ -1,6 +1,6 @@
 export type Product = {
-  id: number;
-  created_at: string;
+  id?: number;
+  created_at?: string;
   name: string;
   main_img_url: string;
   sub1_img_url: string;
@@ -9,8 +9,7 @@ export type Product = {
   category: string;
   order?: number;
   description: string;
-  updated_at: string;
-  modalType?: string;
+  updated_at?: string;
 };
 
 export type ImageFileType = {
@@ -18,8 +17,11 @@ export type ImageFileType = {
   file: File;
 };
 
-export type ModalProps = {
-  product: Product;
+export type BaseModalProps = {
   toggleModal: () => void;
   refreshAdmin: () => void;
 };
+
+export type ModalProps = {
+  product: Product;
+} & BaseModalProps;
