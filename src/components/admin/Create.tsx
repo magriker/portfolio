@@ -1,13 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import { CATEGORIES } from "../../constants";
 import { createClient } from "@supabase/supabase-js";
-import { useNavigate } from "react-router";
 import { FileUploader } from "react-drag-drop-files";
 import { v4 } from "uuid";
 import Label from "../Label";
 import "../../Create.css";
 import "tailwindcss";
-import { ImageFileType } from "./type";
+import { BaseModalProps, ImageFileType } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
@@ -17,7 +16,7 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 );
 
-const Create = () => {
+const Create: React.FC<BaseModalProps> = ({ toggleModal, refreshAdmin }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
@@ -26,7 +25,6 @@ const Create = () => {
   const [mainImageName, setMainImageName] = useState("");
   const [subImages, setSubImages] = useState<string[]>([]);
   const [subImagefiles, setSubImageFiles] = useState<ImageFileType[]>([]);
-  const navigate = useNavigate();
   useFetchSession();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,11 +70,8 @@ const Create = () => {
           : "",
     });
 
-    navigate("/admin");
-  };
-
-  const handleBack = () => {
-    navigate("/admin");
+    toggleModal();
+    refreshAdmin();
   };
 
   const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -114,15 +109,6 @@ const Create = () => {
           </Label>
         </label>
       </p>
-      <div className="back-button">
-        <a onClick={() => handleBack()}>
-          <span className="arrow">&larr;</span>
-          <Label size="s" hover>
-            back
-          </Label>
-        </a>
-      </div>
-
       <form onSubmit={handleSubmit} className="create-form">
         <div className="name-form">
           <label>
