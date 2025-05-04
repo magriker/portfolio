@@ -1,16 +1,15 @@
 import Label from "./Label";
 import "../About.css";
+import { Trans, useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="chatchphrase-box">
         <img src="/Portrait.png" alt="Portrait" className="portrait"></img>
         <div className="chatchprase">
-          <Label size="l">
-            “I want my work to be meaningful and helpful for people in every day
-            life.”
-          </Label>
+          <Label size="l">{t("chatchPhrase")}</Label>
         </div>
       </div>
       <div className="history">
@@ -21,19 +20,7 @@ const About = () => {
             </Label>
           </p>
           <Label size="s">
-            I worked for several companies in the past, in collaboration for my
-            university projects or as a working student, freelancer or intern.
-            The companies I worked with are operating in the field of industrial
-            design, graphic design or UX/UI design. My most recent work is in
-            collaboration with the maritime science museum in Bremerhaven,
-            Germany to create an inclusive museum environment. Additionally to
-            that am I freelancing for the Tokyo University where I support with
-            design research and electronic prototyping.
-            <br />
-            <br />
-          </Label>
-          <Label size="s">
-            For my whole work experience please visit my LinkedIn profile.
+            {t("workExperience")}
             <br />
             <br />
           </Label>
@@ -54,12 +41,12 @@ const About = () => {
             <img src="/circle.png" alt="circle" className="circle" />
             <div className="Bachelor-title">
               <Label size="s" bold>
-                Bachelor in Industrial design
+                {t("bachelorIndustrialDesign")}
                 <br />
               </Label>
               <Label size="s">
-                Burg Giebichenstein School of Art and Design Halle
-                &#40;Saale&#41;, Germany Graduation 02.2023 <br />
+                {t("uniForIndustrialDesign")}
+                <br />
                 <br />
               </Label>
               <Label size="s" bold>
