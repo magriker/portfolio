@@ -1,6 +1,6 @@
 import Label from "./Label";
 import "../About.css";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
@@ -50,11 +50,11 @@ const About = () => {
                 <br />
               </Label>
               <Label size="s" bold>
-                Exchange Semester
+                {t("exchangeSemester")}
                 <br />
               </Label>
               <Label size="s">
-                Tokyo University of the Arts Tokyo, Japan 04.2022 - 10.2022{" "}
+                {t("artUniForexchangesemester")}
                 <br />
               </Label>
             </div>
@@ -63,21 +63,20 @@ const About = () => {
             <img src="/circle.png" alt="circle" className="circle" />
             <div className="Bachelor-title">
               <Label size="s" bold>
-                Bachelor International Media and IT
+                {t("bachelorIt")}
                 <br />
               </Label>
               <Label size="s">
-                HTW Berlin Berlin, Germany Graduation 10.2016
+                {t("uniforIt")}
                 <br />
                 <br />
               </Label>
               <Label size="s" bold>
-                Exchange Semester
+                {t("exchangeSemester")}
                 <br />
               </Label>
               <Label size="s">
-                GardyneHolt - practical semester Auckland, New Zealand 09.2014 -
-                02.2015
+                {t("itUniforexchangesemester")}
                 <br />
               </Label>
             </div>

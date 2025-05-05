@@ -18,6 +18,11 @@ const resources = {
       bachelorIndustrialDesign: "Bachelor in Industrial design",
       uniForIndustrialDesign:
         "Burg Giebichenstein School of Art and Design Halle(Saale), Germany Graduation 02.2023",
+      exchangeSemester: "Exchange Semester",
+      artUniForexchangesemester:
+        "Tokyo University of the Arts Tokyo, Japan 04.2022 - 10.2022",
+      bachelorIt: "Bachelor International Media and IT",
+      uniforIt: "HTW Berlin Berlin, Germany Graduation 10.2016",
     },
   },
   jp: {
@@ -31,7 +36,14 @@ const resources = {
         "これまで、大学プロジェクトをはじめ、ワーキングスチューデント、フリーランス、インターンとして、さまざまな企業と協働してきました。関わってきた分野は、インダストリアルデザイン、グラフィックデザイン、UX/UIデザインなど多岐にわたります。最近では、ドイツ・ブレーマーハーフェンにあるドイツ海洋博物館と連携し、インクルーシブなミュージアム環境の創出に取り組みました。また、現在は東京大学とフリーランス契約を結び、デザインリサーチおよび電子工作のプロトタイピングを担当しています。これまでの職務経歴についての詳細は、LinkedInプロフィールをご覧ください。",
       bachelorIndustrialDesign: "インダストリアルデザイン専攻（学士）",
       uniForIndustrialDesign:
-        "ブルク・ギービヒェンシュタイン芸術大学（ドイツ）インダストリアルデザイン専攻（学士）2023年2月 卒業",
+        "ブルク・ギービヒェンシュタイン芸術大学（ドイツ）2023年2月 卒業",
+      exchangeSemester: "交換留学",
+      artUniForexchangesemester: "東京藝術大学 2022年4月 〜 2022年10月",
+      bachelorIt: "国際メディアおよびIT専攻（学士）",
+      uniforIt:
+        "HTWベルリン（ベルリン工科経済応用科学大学)(ドイツ) 2016年10月 卒業",
+      itUniforexchangesemester:
+        "GardyneHolt(オークランド、ニュージーランド)実務実習 2014年9月 〜 2015年2月",
     },
   },
 };
