@@ -5,9 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App.tsx";
 import Details from "./components/Details.tsx";
 import Admin from "./components/admin/Admin.tsx";
-import Create from "./components/admin/Create.tsx";
-import Edit from "./components/admin/Edit.tsx";
-import Delete from "./components/admin/Delete.tsx";
 import "./utils/i18n";
 import Login from "./components/admin/Login.tsx";
 
@@ -27,18 +24,6 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin></Admin>,
-  },
-  {
-    path: "/admin/create",
-    element: <Create></Create>,
-  },
-  {
-    path: "/admin/edit",
-    element: <Edit></Edit>,
-  },
-  {
-    path: "/admin/delete",
-    element: <Delete></Delete>,
   },
   {
     path: "/admin/login",
