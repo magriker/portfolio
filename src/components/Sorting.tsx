@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { CATEGORIES_LABEL } from "../constants";
+import { Product } from "./admin/type";
 
 const Sorting = () => {
   const navigate = useNavigate();
@@ -15,13 +16,13 @@ const Sorting = () => {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [products, setProducts] = useState([] as any[]);
+  const [products, setProducts] = useState<Product[]>();
   const [category, setCategory] = useState(1);
 
   const filteredProducts =
     category === 1
       ? products
-      : products.filter((product) => Number(product.category) === category);
+      : products?.filter((product) => Number(product.category) === category);
 
   async function fetchProducts() {
     const { data, error } = await supabase
@@ -36,18 +37,16 @@ const Sorting = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toDetaliPage = (product: object, productId: number) => {
+  const toDetaliPage = (product: Product, productId: number | undefined) => {
     navigate(`/details/:${productId}`, { state: { product } });
   };
-
-  console.log(filteredProducts);
 
   return (
     <>
       <Tab setCategory={setCategory} tabs={CATEGORIES_LABEL}></Tab>
 
       <div className="product-box">
-        {filteredProducts.map((product) => (
+        {filteredProducts?.map((product) => (
           <a
             onClick={() => toDetaliPage(product, product.id)}
             key={product.id}
