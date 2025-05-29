@@ -15,7 +15,6 @@ const Sorting = () => {
     import.meta.env.VITE_SUPABASE_KEY
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [products, setProducts] = useState<Product[]>();
   const [category, setCategory] = useState(1);
 
