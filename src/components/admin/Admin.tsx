@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Label from "../Label";
@@ -9,6 +8,7 @@ import useFetchSession from "../../hooks/useFetchSession";
 import Edit from "./Edit";
 import Delete from "./Delete";
 import Create from "./Create";
+import useSupabaseClient from "../../hooks/useSupabaseClient";
 const LABEL_EDIT = "edit";
 const LABEL_DELETE = "delete";
 const LABEL_CREATE = "create";
@@ -24,10 +24,7 @@ const Admin = () => {
   const navigate = useNavigate();
   useFetchSession();
 
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
-  );
+  const supabase = useSupabaseClient();
 
   const refreshAdmin = () => {
     fetchProducts();

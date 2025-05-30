@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import { ChangeEvent, useState } from "react";
 
 import { CATEGORIES } from "../../constants";
@@ -7,6 +6,7 @@ import Label from "../Label";
 import { v4 } from "uuid";
 import { ImageFileType, ModalProps } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
+import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const Edit: React.FC<ModalProps> = ({ product, toggleModal, refreshAdmin }) => {
   // const location = useLocation();
@@ -26,10 +26,7 @@ const Edit: React.FC<ModalProps> = ({ product, toggleModal, refreshAdmin }) => {
   const [subImg3Viewable, setSubImg3Viewable] = useState(product.sub3_img_url);
   const [subImg3, setSubImg3] = useState<ImageFileType>();
 
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
-  );
+  const supabase = useSupabaseClient();
 
   useFetchSession();
   const handleStorageUpload = async (
