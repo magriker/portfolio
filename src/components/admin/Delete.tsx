@@ -1,10 +1,10 @@
-import { createClient } from "@supabase/supabase-js";
 // import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
 import { CATEGORIES } from "../../constants";
 import "../../Delete.css";
 import useFetchSession from "../../hooks/useFetchSession";
 import { ModalProps } from "./type";
+import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const Delete: React.FC<ModalProps> = ({
   product,
@@ -15,11 +15,7 @@ const Delete: React.FC<ModalProps> = ({
   const subImg1Url1 = product.sub1_img_url;
   const subImg1Url2 = product.sub2_img_url;
   const subImg1Url3 = product.sub3_img_url;
-
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
-  );
+  const supabase = useSupabaseClient();
 
   useFetchSession();
   const handleDelete = async () => {

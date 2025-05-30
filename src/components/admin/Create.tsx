@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from "react";
 import { CATEGORIES } from "../../constants";
-import { createClient } from "@supabase/supabase-js";
 import { FileUploader } from "react-drag-drop-files";
 import { v4 } from "uuid";
 import Label from "../Label";
@@ -8,15 +7,12 @@ import "../../Create.css";
 import "tailwindcss";
 import { BaseModalProps, ImageFileType } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
+import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
-);
-
 const Create: React.FC<BaseModalProps> = ({ toggleModal, refreshAdmin }) => {
+  const supabase = useSupabaseClient();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0].key);
@@ -26,6 +22,7 @@ const Create: React.FC<BaseModalProps> = ({ toggleModal, refreshAdmin }) => {
   const [subImages, setSubImages] = useState<string[]>([]);
   const [subImagefiles, setSubImageFiles] = useState<ImageFileType[]>([]);
   useFetchSession();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mainImageFile) {

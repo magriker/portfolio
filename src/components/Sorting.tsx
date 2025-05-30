@@ -1,19 +1,16 @@
 import Tab from "./Tab";
 import "../tab.css";
 import "../Sorting.css";
-import { createClient } from "@supabase/supabase-js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { CATEGORIES_LABEL } from "../constants";
 import { Product } from "./admin/type";
+import useSupabaseClient from "../hooks/useSupabaseClient";
 
 const Sorting = () => {
   const navigate = useNavigate();
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
-  );
+  const supabase = useSupabaseClient();
 
   const [products, setProducts] = useState<Product[]>();
   const [category, setCategory] = useState(1);
