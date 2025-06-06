@@ -1,10 +1,10 @@
 import Tab from "./Tab";
-import "../tab.css";
-import "../Sorting.css";
+import "../styles/tab.css";
+import "../styles/Sorting.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { CATEGORIES_LABEL } from "../constants";
+import { CATEGORIES_LABEL } from "../utils/constants";
 import { Product } from "./admin/type";
 import useSupabaseClient from "../hooks/useSupabaseClient";
 

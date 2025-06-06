@@ -1,5 +1,5 @@
 import Label from "./Label";
-import "../tab.css";
+import "../styles/tab.css";
 
 export type keyValue = {
   key: number;

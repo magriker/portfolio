@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 
-import { CATEGORIES } from "../../constants";
-import "../../Edit.css";
+import { CATEGORIES } from "../../utils/constants";
+import "../../styles/Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
 import { ImageFileType, ModalProps } from "./type";

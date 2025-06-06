@@ -1,7 +1,7 @@
 // import { useLocation, useNavigate } from "react-router";
 import Label from "../Label";
-import { CATEGORIES } from "../../constants";
-import "../../Delete.css";
+import { CATEGORIES } from "../../utils/constants";
+import "../../styles/Delete.css";
 import useFetchSession from "../../hooks/useFetchSession";
 import { ModalProps } from "./type";
 import useSupabaseClient from "../../hooks/useSupabaseClient";

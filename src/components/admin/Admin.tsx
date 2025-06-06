@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Label from "../Label";
-import "../../Admin.css";
-import { CATEGORIES } from "../../constants";
+import "../../styles/Admin.css";
+import { CATEGORIES } from "../../utils/constants";
 import { Product } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";
 import Edit from "./Edit";

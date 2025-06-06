@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import Label from "./Label";
-import "../Details.css";
+import "../styles/Details.css";
 
 const Details = () => {
   const location = useLocation();
