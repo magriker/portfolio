@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { CATEGORIES } from "../../constants";
+import { CATEGORIES } from "../../utils/constants";
 import { FileUploader } from "react-drag-drop-files";
 import { v4 } from "uuid";
 import Label from "../Label";
-import "../../Create.css";
+import "../../styles/Create.css";
 import "tailwindcss";
 import { BaseModalProps, ImageFileType } from "./type";
 import useFetchSession from "../../hooks/useFetchSession";

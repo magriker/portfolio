@@ -1,7 +1,7 @@
-import "../App.css";
+import "../styles/App.css";
 import Label from "./Label";
 import Tab from "./Tab";
-import "../Header.css";
+import "../styles/Header.css";
 import { changeLanguage } from "i18next";
 import { Trans, useTranslation } from "react-i18next";
 import { useState } from "react";

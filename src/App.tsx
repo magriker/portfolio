@@ -1,35 +1,35 @@
-import "./App.css";
-import About from "./components/About";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Sorting from "./components/Sorting";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import User from "./User.tsx";
+import Details from "./components/Details.tsx";
+import Admin from "./components/admin/Admin.tsx";
+import "./utils/i18n.ts";
+import Login from "./components/admin/Login.tsx";
 
-function App() {
-  const handleScroll = (sectionName: string): void => {
-    const element = document.getElementById(sectionName + "-section");
-    element?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <User></User>,
+  },
+  {
+    path: "/details",
+    element: <Details></Details>,
+  },
+  {
+    path: "/details/:productId",
+    element: <Details></Details>,
+  },
+  {
+    path: "/admin",
+    element: <Admin></Admin>,
+  },
+  {
+    path: "/admin/login",
+    element: <Login></Login>,
+  },
+]);
 
-  return (
-    <>
-      <div className="app-container">
-        <div className="header-section">
-          <Header onScroll={handleScroll}></Header>
-        </div>
-        <div id="work-section">
-          <Sorting></Sorting>
-        </div>
-        <div id="about-section">
-          <About></About>
-        </div>
-        <div id="contact-section">
-          <Footer></Footer>
-        </div>
-      </div>
-    </>
-  );
-}
+const App = () => {
+  return <RouterProvider router={router}></RouterProvider>;
+};
 
 export default App;
