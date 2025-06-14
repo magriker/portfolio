@@ -1,6 +1,6 @@
-import "../styles/App.css";
-import "../styles/Footer.css";
-import Label from "./Label";
+import "../../styles/App.css";
+import "../../styles/Footer.css";
+import Label from "../Label";
 
 const Footer = () => {
   return (

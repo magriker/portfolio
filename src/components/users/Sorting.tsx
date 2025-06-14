@@ -1,12 +1,12 @@
-import Tab from "./Tab";
-import "../styles/tab.css";
-import "../styles/Sorting.css";
+import Tab from "../Tab";
+import "../../styles/tab.css";
+import "../../styles/Sorting.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { CATEGORIES_LABEL } from "../utils/constants";
-import { Product } from "./admin/type";
-import useSupabaseClient from "../hooks/useSupabaseClient";
+import { CATEGORIES_LABEL } from "../../utils/constants";
+import { Product } from "../../types/type";
+import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const Sorting = () => {
   const navigate = useNavigate();

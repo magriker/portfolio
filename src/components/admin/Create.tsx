@@ -5,13 +5,13 @@ import { v4 } from "uuid";
 import Label from "../Label";
 import "../../styles/Create.css";
 import "tailwindcss";
-import { BaseModalProps, ImageFileType } from "./type";
+import { CustomModalProps, ImageFileType } from "../../types/type";
 import useFetchSession from "../../hooks/useFetchSession";
 import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
-const Create: React.FC<BaseModalProps> = ({ toggleModal, refreshAdmin }) => {
+const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
   const supabase = useSupabaseClient();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

@@ -17,11 +17,11 @@ export type ImageFileType = {
   file: File;
 };
 
-export type BaseModalProps = {
+export type CustomModalProps = {
   toggleModal: () => void;
   refreshAdmin: () => void;
 };
 
 export type ModalProps = {
   product: Product;
-} & BaseModalProps;
+} & CustomModalProps;

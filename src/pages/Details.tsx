@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router";
-import Label from "./Label";
+import Label from "../components/Label";
 import "../styles/Details.css";
 
 const Details = () => {

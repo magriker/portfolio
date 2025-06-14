@@ -3,7 +3,7 @@ import Label from "../Label";
 import { CATEGORIES } from "../../utils/constants";
 import "../../styles/Delete.css";
 import useFetchSession from "../../hooks/useFetchSession";
-import { ModalProps } from "./type";
+import { ModalProps } from "../../types/type";
 import useSupabaseClient from "../../hooks/useSupabaseClient";
 
 const Delete: React.FC<ModalProps> = ({

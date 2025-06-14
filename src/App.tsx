@@ -1,18 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import User from "./User.tsx";
-import Details from "./components/Details.tsx";
-import Admin from "./components/admin/Admin.tsx";
+import User from "./pages/User.tsx";
+import Details from "./pages/Details.tsx";
+import Admin from "./pages/Admin.tsx";
 import "./utils/i18n.ts";
-import Login from "./components/admin/Login.tsx";
+import Login from "./pages/Login.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <User></User>,
-  },
-  {
-    path: "/details",
-    element: <Details></Details>,
   },
   {
     path: "/details/:productId",
