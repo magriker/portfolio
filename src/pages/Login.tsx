@@ -1,5 +1,5 @@
-import Label from "../Label";
-import "../../styles/Login.css";
+import Label from "../components/Label";
+import "../styles/Login.css";
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router";

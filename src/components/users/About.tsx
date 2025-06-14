@@ -1,5 +1,5 @@
-import Label from "./Label";
-import "../styles/About.css";
+import Label from "../Label";
+import "../../styles/About.css";
 import { useTranslation } from "react-i18next";
 
 const About = () => {

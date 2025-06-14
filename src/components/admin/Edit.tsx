@@ -4,7 +4,7 @@ import { CATEGORIES } from "../../utils/constants";
 import "../../styles/Edit.css";
 import Label from "../Label";
 import { v4 } from "uuid";
-import { ImageFileType, ModalProps } from "./type";
+import { ImageFileType, ModalProps } from "../../types/type";
 import useFetchSession from "../../hooks/useFetchSession";
 import useSupabaseClient from "../../hooks/useSupabaseClient";
 

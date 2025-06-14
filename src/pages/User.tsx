@@ -1,8 +1,9 @@
-import "./styles/App.css";
-import About from "./components/About";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Sorting from "./components/Sorting";
+import "../styles/App.css";
+// import "@/styles/App.css";
+import About from "../components/users/About";
+import Footer from "../components/users/Footer";
+import Header from "../components/users/Header";
+import Sorting from "../components/users/Sorting";
 
 function User() {
   const handleScroll = (sectionName: string): void => {
