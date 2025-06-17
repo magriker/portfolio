@@ -48,3 +48,19 @@ export default tseslint.config({
   },
 });
 ```
+
+# Portfolio page for Sophie
+
+## Overview
+
+このポートフォリオは日本で就活をする予定の Sophie さんから依頼を受け、
+自分のスキルを使用し作った就活用ポートフォリオの Web アプリです。
+
+## 使用技術
+
+- フロントエンド: React / JavaScript / TypeScript / HTML / CSS
+  - i18n / uuid / react-drag-drop-files / eact-router
+- バックエンド: supabase
+- その他: Github / Vercel
+
+## 主な機能
