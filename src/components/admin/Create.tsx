@@ -140,7 +140,9 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {!name && <div>You must fill the name</div>}
+          {!name && (
+            <div className="error-message">※You must fill the name</div>
+          )}
         </div>
         <div className="description-form">
           <label>
@@ -172,7 +174,9 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
           </label>
           <input type="file" onChange={handleUpload} />
           <img src={mainImage} alt="" width={200} />
-          {!mainImageFile && <div>You must upload main img file</div>}
+          {!mainImageFile && (
+            <div className="error-message">※You must upload main img file</div>
+          )}
         </div>
 
         <div className="subImg-drop-box">
@@ -202,7 +206,7 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
         </button>
         <button
           type="submit"
-          className={`admin-button`}
+          className={`${isDisableButton ? "button-disabled" : "admin-button"}`}
           disabled={isDisableButton}
         >
           Register

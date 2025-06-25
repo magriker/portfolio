@@ -10,7 +10,7 @@
 ### 公開用 URL
 
 - ユーザー画面： https://portfolio-git-main-kennys-projects-79817d7f.vercel.app
-- 管理画面：https://portfolio-kennys-projects-79817d7f.vercel.app/admin//login
+- 管理画面：https://portfolio-kennys-projects-79817d7f.vercel.app/admin/login
   - ログイン email : -----
   - パスワード: -----
 
