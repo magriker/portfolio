@@ -138,6 +138,28 @@ form textarea {
   /* display: inline-block; */
 }
 
+.bottom-margin {
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+  font-size: 12px;
+}
+
+.button-disabled {
+  font-size: 14px;
+  font-weight: bold;
+  width: auto;
+  padding: 10px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: #868788;
+  border: 1px solid #868788;
+  background-color: white;
+}
+
 @media screen and (min-width: 768px) {
   .create {
     width: 500px;
@@ -162,5 +184,10 @@ form textarea {
 
   .dropped-img {
     width: 200px;
+  }
+
+  .error-message {
+    /* color: rgb(255, 0, 0); */
+    font-size: 16px;
   }
 }

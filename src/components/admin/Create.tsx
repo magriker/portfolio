@@ -23,8 +23,12 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
   const [subImagefiles, setSubImageFiles] = useState<ImageFileType[]>([]);
   useFetchSession();
 
+  const isDisableButton = !name || !mainImageFile;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isDisableButton) return;
+
     if (mainImageFile) {
       const { error } = await supabase.storage
         .from("Product_img")
@@ -84,17 +88,37 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
     }
   };
 
-  const handleChange = (file: FileList) => {
-    if (subImages.length > 2) {
+  const handleSubimages = (files: FileList) => {
+    if (subImages.length + files.length > 3) {
       alert("You can upload only 3 sub image files ");
       return;
     }
 
-    const subimage = file[0];
-    const subImgName = `${v4()}-${subimage.name}`;
-    const imgobject = { file: subimage, fileName: subImgName };
-    setSubImageFiles([...subImagefiles, imgobject]);
-    setSubImages([...subImages, URL.createObjectURL(subimage)]);
+    console.log(files);
+    const arrayfiles = Object.values(files);
+    const urls = arrayfiles.map((file) => URL.createObjectURL(file));
+    console.log(arrayfiles);
+    console.log(urls);
+
+    const imgObjects = arrayfiles.map((file) => {
+      const subImgName = `${v4()}-${file.name}`;
+      return { file: file, fileName: subImgName };
+    });
+
+    setSubImageFiles([...subImagefiles, ...imgObjects]);
+    setSubImages([...subImages, ...urls]);
+
+    // console.log(imgObjects);
+    // const subimage = files[0];
+    // const subImgName = `${v4()}-${subimage.name}`;
+    // const imgobject = { file: subimage, fileName: subImgName };
+    // setSubImageFiles([...subImagefiles, imgobject]);
+    // setSubImages([...subImages, URL.createObjectURL(subimage)]);
+  };
+
+  const handleClear = () => {
+    setSubImageFiles([]);
+    setSubImages([]);
   };
 
   return (
@@ -116,6 +140,9 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          {!name && (
+            <div className="error-message">※You must fill the name</div>
+          )}
         </div>
         <div className="description-form">
           <label>
@@ -147,6 +174,9 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
           </label>
           <input type="file" onChange={handleUpload} />
           <img src={mainImage} alt="" width={200} />
+          {!mainImageFile && (
+            <div className="error-message">※You must upload main img file</div>
+          )}
         </div>
 
         <div className="subImg-drop-box">
@@ -155,7 +185,7 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
           </label>
           <div className="uploader">
             <FileUploader
-              handleChange={handleChange}
+              handleChange={handleSubimages}
               name="file"
               types={fileTypes}
               multiple
@@ -167,7 +197,18 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
             ))}
           </div>
         </div>
-        <button type="submit" className="admin-button">
+        <button
+          type="button"
+          onClick={handleClear}
+          className="admin-button bottom-margin"
+        >
+          Clear the subimages
+        </button>
+        <button
+          type="submit"
+          className={`${isDisableButton ? "button-disabled" : "admin-button"}`}
+          disabled={isDisableButton}
+        >
           Register
         </button>
       </form>
