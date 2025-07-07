@@ -1,6 +1,7 @@
 footer {
   height: 259px;
-  width: 384px;
+  width: 300px;
+  margin: auto;
   position: relative;
   display: flex;
   flex-direction: column;
