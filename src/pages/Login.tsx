@@ -20,6 +20,7 @@ const Login = () => {
         email,
         password,
       });
+
       if (error) throw error;
       navigate("/admin");
     } catch (error) {
