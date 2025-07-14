@@ -14,11 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // await supabase.auth.admin.createUser({
-    //   email: "tari488@mirai.re",
-    //   password: "12345",
-    //   email_confirm: true,
-    // });
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
