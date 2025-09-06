@@ -138,6 +138,7 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
           <input
             type="text"
             value={name}
+            maxLength={30}
             onChange={(e) => setName(e.target.value)}
           />
           {!name && (
@@ -150,6 +151,7 @@ const Create: React.FC<CustomModalProps> = ({ toggleModal, refreshAdmin }) => {
           </label>
           <textarea
             value={description}
+            maxLength={800}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
